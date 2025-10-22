@@ -11,7 +11,7 @@ const cryptoUser = new NextCrypto('user enabled')
 export default async function layout({ children }) {
   const cookieStore = cookies()
   const activeUser = cookieStore.get('enabledUser')
-  let userEnabled = false
+  let userEnabled = true
 
   if (activeUser) {
     userEnabled = (await cryptoUser.decrypt(activeUser.value)) === 'true'
@@ -21,7 +21,7 @@ export default async function layout({ children }) {
     if (userEnabled) return children
     return <TrialProvider>{children}</TrialProvider>
   }
-  
+
   return (
     <div className=" z-0 w-full h-full relative ">
       <div className=" z-50 absolute top-32 w-full h-fit py-2 flex justify-center ">

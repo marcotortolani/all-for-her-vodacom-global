@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic'
 import Providers from '@/providers/Providers'
-// import ChatBot from "./components/ChatBot"
 import './globals.css'
 
 const Header = dynamic(() => import('./components/ui/Header'))
@@ -8,17 +7,17 @@ const Footer = dynamic(() => import('./components/ui/Footer'))
 const DownbarMobile = dynamic(() => import('./components/ui/DownbarMobile'))
 
 export const metadata = {
-  title: 'EPA Mujer',
+  title: 'All For Her',
   description:
-    'Portal de contenido para mujeres. Diseñado y desarrollado por Media Moob',
-  version: '1.1.5',
+    'The best content for the strongest women. Desgined & developed by Media Moob',
+  version: '1.2.0',
   openGraph: {
-    title: 'EPA Mujer',
+    title: 'All For Her',
     description:
-      'Portal de contenido para mujeres. Diseñado y desarrollado por Media Moob',
-    url: 'http://ve.digitel.epa.club/',
-    siteName: 'EpaMujer',
-    locale: 'es_ES',
+      'The best content for the strongest women. Desgined & developed by Media Moob',
+    url: '',
+    siteName: 'AllForHer',
+    locale: 'en_US',
     type: 'website',
   },
 }
@@ -30,7 +29,6 @@ export default function RootLayout({ children }) {
         <Header />
         <Providers>{children}</Providers>
         <DownbarMobile />
-        {/* <ChatBot /> */}
         <Footer />
       </body>
     </html>

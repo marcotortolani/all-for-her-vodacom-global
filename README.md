@@ -35,6 +35,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Versions
 
+- v1.2.0:
+    Se replica desde EPA Mujer (Digitel Venezuela)
+    Se deshabilita el validador y el trial
+
 - v1.1.5:
     Se corrige falla en las peticiones, se agrega la categoría "Relaciones" que no estaba en el front
 
