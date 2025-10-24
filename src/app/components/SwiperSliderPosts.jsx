@@ -1,10 +1,9 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+
 import parse from 'html-react-parser'
 import { useState, useRef } from 'react'
-import { poppinsReg500, poppinsReg600 } from '../../utils/fonts'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay, Navigation } from 'swiper/modules'
@@ -13,18 +12,22 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 import PaginationBullets from './ui/PaginationBullets'
-import ButtonLikeFav from './ui/ButtonLikeFav'
+
 import ImageMissing from './ImageMissing'
+import ButtonSeePost from './ui/ButtonSeePost'
+import { TAGS } from '@/utils/constants'
+import PlayCircle from './ui/PlayCircle'
 
 SwiperCore.use([Pagination])
 
 export default function SwiperSliderPosts({
   posts,
+  categorySlug,
   slidesPerView,
   delayPerView,
-  spaceBetweenSlides,
   colorBullets,
   sizeBullets,
+  buttonBgColor = 'bg-primary',
 }) {
   const [indexPag, setIndexPag] = useState(0)
   const sliderRef = useRef(0)
@@ -44,9 +47,9 @@ export default function SwiperSliderPosts({
     <div className=" w-full px-4 lg:px-0 h-fit  ">
       <Swiper
         ref={sliderRef}
-        slidesPerView={slidesPerView}
+        // slidesPerView={slidesPerView}
         centeredSlides={false}
-        spaceBetween={spaceBetweenSlides}
+        // spaceBetween={spaceBetweenSlides}
         autoplay={{
           delay: delayPerView,
           disableOnInteraction: false,
@@ -54,69 +57,77 @@ export default function SwiperSliderPosts({
         // pagination={{
         //   clickable: true,
         // }}
+        breakpoints={{
+          280: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          // when window width is >= 768px
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+          },
+          // when window width is >= 1024px
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 50,
+          },
+        }}
         pagination={pagination}
         modules={[Autoplay, Navigation]}
         navigation={false}
-        className="mySwiper w-full  max-w-2xl md:max-w-2xl lg:max-w-4xl h-full lg:min-h-[250px] px-0 overflow-hidden flex justify-center items-center gap-6 "
+        className="mySwiper w-full max-w-2xl md:max-w-2xl lg:max-w-4xl h-full lg:min-h-[250px] px-0 overflow-hidden flex justify-center items-center gap-6 "
       >
-        {posts?.map((post) => (
-          <SwiperSlide className={` w-full  h-fit`} key={post?.id}>
-            <div className={`  h-fit  grid grid-cols-2 lg:grid-cols-5 gap-4`}>
-              <div className=" col-span-1 lg:col-span-3 relative w-full h-full min-h-[150px] md:min-h-[200px] lg:min-h-[250px] ">
-                {post?.images.length > 0 ? (
-                  <Image
-                    className={` w-auto h-full md:w-full md:h-auto  object-cover rounded-lg`}
-                    // width={200}
-                    // height={200}
-                    fill={true}
-                    sizes="(max-width: 350px)"
-                    src={post?.images[0]}
-                    alt={`Image ${post?.title}`}
-                  />
-                ) : (
-                  <ImageMissing />
-                )}
-              </div>
+        {posts?.map((post) => {
+          const isVideo = post?.tags?.includes(TAGS.video.id)
+            ? 'video'
+            : 'editorial'
+          return (
+            <SwiperSlide className={` w-full  h-full`} key={post?.id}>
+              <div
+                key={post?.id}
+                className={` w-full aspect-[3/4] relative flex flex-col items-center justify-center rounded-lg md:rounded-xl lg:rounded-2xl`}
+              >
+                <div className=" relative z-0 w-full h-full rounded-[inherit]">
+                  {post?.images.length > 0 ? (
+                    <Image
+                      className={` relative w-full h-full object-center object-cover rounded-[inherit] cursor-default pointer-events-none select-none`}
+                      width={220}
+                      height={220}
+                      src={post?.images[0]}
+                      alt={`Image ${post?.title}`}
+                    />
+                  ) : (
+                    <ImageMissing />
+                  )}
+                  <div className=" z-10 w-full h-full flex items-center justify-center absolute top-0 bg-black/30 rounded-[inherit]">
+                    {isVideo === 'video' && <PlayCircle />}
+                  </div>
+                </div>
 
-              <div className="  col-span-1 lg:col-span-2 w-full  h-full flex flex-col justify-between">
-                <div className="  w-full  h-1/6 md:h-1/5 lg:h-1/4 mb-1 flex items-start justify-between ">
+                <div className="  z-20 absolute bottom-0 w-full px-4 py-2 lg:px-6 lg:py-2  flex flex-col items-start justify-end gap-2 rounded-[inherit] ">
                   <h3
-                    className={
-                      poppinsReg600.className +
-                      `  text-start text-xs sm:text-sm md:text-base lg:text-xl leading-3 md:leading-[1.1rem] lg:leading-[1.4rem] text-black md:text-EpaWhite`
-                    }
+                    className={` w-5/6 line-clamp-3 first-letter:capitalize text-left text-sm sm:text-base md:text-lg lg:text-2xl text-white text-shadow-sm shadow-black pointer-events-none select-none`}
                   >
                     {parse(post?.title || '')}
                   </h3>
-                  <div className=" px-2">
-                    <ButtonLikeFav post={post} />
-                  </div>
-                </div>
-                <p
-                  className={
-                    poppinsReg500.className +
-                    ' w-full h-full max-h-20 md:max-h-28 lg:max-h-32   text-[0.55rem] md:text-sm lg:text-base leading-3 lg:leading-4 text-black md:text-EpaWhite overflow-hidden '
-                  }
-                >
-                  {parse(post?.excerpt || '')}
-                </p>
-
-                <div className=" z-20 w-full h-1/6 lg:h-1/5 px-2 lg:px-6 py-4 flex items-center justify-between bg-EpaPostButton rounded-b-lg md:rounded-b-xl lg:rounded-b-2xl">
-                  <Link
-                    className={
-                      poppinsReg600.className +
-                      '  text-EpaPrimary text-sm md:text-lg lg:text-2xl underline'
-                    }
-                    href="/bienestar/[id]"
-                    as={'/bienestar/' + post?.id}
-                  >
-                    Ver más
-                  </Link>
+                  <ButtonSeePost
+                    id={post?.id}
+                    text="Ver"
+                    href={`/${categorySlug}/${isVideo}/${post?.slug}`}
+                    size="sm"
+                    bgColor={buttonBgColor}
+                  />
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          )
+        })}
       </Swiper>
 
       <PaginationBullets

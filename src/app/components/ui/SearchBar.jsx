@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useRouter, usePathname } from 'next/navigation'
 import parse from 'html-react-parser'
 import { useState, useEffect } from 'react'
-import { openSans } from '@/utils/fonts'
+
 import { searchData, getCategoryNameByPostId } from '@/utils/api'
 
 import { configSiteStatic } from '../../../../configSiteStatic'
@@ -59,15 +59,12 @@ export default function SearchBar() {
     <div className=" w-2/3 max-w-[400px] lg:max-w-[600px] h-fit min-h-10 absolute -bottom-5 lg:top-24 flex justify-center">
       <form action="" className=" relative w-full ">
         <input
-          className={
-            openSans.className +
-            ` search-bar w-full  pl-6 py-1 text-sm font-[300] border-EpaPrimary border-solid border-2 rounded-full 
-                outline-none focus:border-EpaDetails `
-          }
+          className={` search-bar w-full  pl-6 py-1 font-openSans text-sm font-[300] border-primary border-solid border-2 rounded-full 
+                outline-none focus:border-accent `}
           type="text"
           name="search"
           id="search"
-          placeholder="Buscar"
+          placeholder="Buscar..."
           value={inputValue}
           onChange={(e) => handleChange(e)}
         />
@@ -90,12 +87,12 @@ export default function SearchBar() {
         )}
       </form>
       {results.length > 0 && inputValue && (
-        <div className=" -z-10 absolute top-10 w-full bg-EpaPostButton border-EpaPrimary  border-solid border-2 rounded-xl">
+        <div className=" -z-10 absolute top-10 w-[90vw] max-w-screen-md bg-primary-extralight/80 backdrop-blur-sm border-primary border-solid border-2 rounded-xl">
           <ul className=" w-full h-fit p-2 py-1">
             {results?.map((result) => (
               <li
                 key={result.id}
-                className="w-full my-3 px-2 bg-EpaPrimary hover:bg-EpaDetails text-EpaWhite rounded-lg"
+                className="w-full my-3 px-2 bg-primary hover:bg-accent text-white rounded-lg"
               >
                 <button
                   onClick={() => handleClick(result.id)}

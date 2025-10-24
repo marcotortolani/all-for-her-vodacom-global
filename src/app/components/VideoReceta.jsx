@@ -1,7 +1,5 @@
-import React from "react";
-import Image from "next/image";
-
-import { poppinsReg400, poppinsReg500, poppinsReg600 } from "../../utils/fonts";
+import React from 'react'
+import Image from 'next/image'
 
 export default function VideoReceta({ elem }) {
   return (
@@ -24,25 +22,21 @@ export default function VideoReceta({ elem }) {
       </div>
       <div className=" w-full flex flex-col gap-2">
         <h2
-          className={poppinsReg600.className + ` py-2 capitalize md:text-xl `}
+          className={`font-poppins font-semibold py-2 capitalize md:text-xl `}
         >
           {elem.title}
         </h2>
         <div className=" w-full flex items-start gap-2 sm:gap-8 md:gap-12 ">
           <div className=" w-1/2 flex flex-col items-center justify-center gap-4 md:gap-6 lg:gap-8 rounded-2xl ">
-            <div className=" w-full bg-EpaPostButton  rounded-[inherit]">
+            <div className=" w-full bgpostButton  rounded-[inherit]">
               <h4
-                className={
-                  poppinsReg500.className +
-                  ` w-full px-4 py-1 text-EpaWhite md:text-lg bg-EpaPrimary rounded-full`
-                }
+                className={` w-full px-4 py-1 font-poppins font-medium text-white md:text-lg bg-primary rounded-full`}
               >
                 Ingredientes:
               </h4>
               <ul
                 className={
-                  poppinsReg400.className +
-                  " px-4 py-4 flex flex-col items-start justify-center gap-4 "
+                  ' font-poppins font-normal px-4 py-4 flex flex-col items-start justify-center gap-4 '
                 }
               >
                 {elem.ingredients?.map((item, index) => (
@@ -67,17 +61,13 @@ export default function VideoReceta({ elem }) {
           </div>
           <div className=" w-1/2 flex flex-col items-center justify-center gap-2 rounded-2xl ">
             <h4
-              className={
-                poppinsReg500.className +
-                ` w-full px-4 py-1 text-EpaWhite md:text-lg bg-EpaPrimary rounded-full`
-              }
+              className={` w-full px-4 py-1 font-poppins font-medium text-white md:text-lg bg-primary rounded-full`}
             >
               Preparación:
             </h4>
             <ul
               className={
-                poppinsReg400.className +
-                " px-1 py-2 flex flex-col items-start justify-center gap-4 "
+                'font-poppins font-normal px-1 py-2 flex flex-col items-start justify-center gap-4 '
               }
             >
               {elem.steps?.map((item, index) => (
@@ -85,7 +75,7 @@ export default function VideoReceta({ elem }) {
                   key={index}
                   className=" w-full flex flex-col items-start font-light text-[0.6rem] sm:text-xs md:text-sm lg:text-base capitalize"
                 >
-                  <span className={poppinsReg600.className + ""}>
+                  <span className={'font-poppins font-semibold'}>
                     Paso {index + 1}
                   </span>
                   <p className=" font-light leading-3 md:leading-4 lg:leading-5">
@@ -98,5 +88,5 @@ export default function VideoReceta({ elem }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { getRandomPosts } from '@/utils/functions'
 import SwiperSliderHomeCover from './SwiperSliderHomeCover'
 
-function cleanDataPosts({ posts, catFiltered }) {
+function cleanDataPosts({ posts }) {
   // process the content and return an object with id, title, images array, paragraph excerpt array
   let data = []
   for (let i = 0; i < posts.length; i++) {
@@ -31,38 +31,30 @@ function cleanDataPosts({ posts, catFiltered }) {
         //   pArray.push(element);
         // }
       })
-    let categ =
-      catFiltered.filter((cat) => cat.id === post.categories[0])[0].slug ===
-      'amor-y-sexo'
-        ? 'amor'
-        : catFiltered.filter((cat) => cat.id === post.categories[0])[0].slug
-    
+
     data.push({
       id: post.id,
-      category: categ,
+      category: post.categories[0],
       title: post.title.rendered,
+      slug: post.slug,
       excerpt: pExcerpt[0],
+      tags: post.tags,
       image: imgArray[0],
     })
   }
   return data
 }
 
-export default function SliderRandomPostsHomeCover({
-  posts,
-  qty,
-  catFiltered,
-}) {
+export default function SliderRandomPostsHomeCover({ posts, qty }) {
   const [randomPosts, setRandomPosts] = useState([])
 
   useEffect(() => {
     if (!posts) return
     const newRandomPosts = cleanDataPosts({
       posts: getRandomPosts({ posts: posts, qty: qty }),
-      catFiltered: catFiltered,
     })
     setRandomPosts(newRandomPosts)
-  }, [posts, qty, catFiltered])
+  }, [posts, qty])
 
   return (
     <SwiperSliderHomeCover

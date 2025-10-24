@@ -2,20 +2,18 @@
 import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { CATEGORIES } from '@/utils/static_data'
-import { poppinsReg400 } from '../../../utils/fonts'
+import { CATEGORIES } from '@/utils/constants'
+
 import { HeartIcon } from '@/utils/icons'
 
-const links = [
-  { title: CATEGORIES.bienestar.name, href: `/${CATEGORIES.bienestar.slug}` },
-  { title: CATEGORIES.moda.name, href: `/${CATEGORIES.moda.slug}` },
-  { title: CATEGORIES.belleza.name, href: `/${CATEGORIES.belleza.slug}` },
-  { title: CATEGORIES.relaciones.name, href: `/${CATEGORIES.relaciones.slug}` },
-  { title: CATEGORIES.recetas.name, href: `/${CATEGORIES.recetas.slug}` },
-  { title: CATEGORIES.amor.name, href: `/${CATEGORIES.amor.slug}` },
-  { title: CATEGORIES.cosmic.name, href: `/${CATEGORIES.cosmic.slug}` },
-  { title: CATEGORIES.videos.name, href: `/${CATEGORIES.videos.slug}` },
-  { title: CATEGORIES.favoritos.name, href: `/${CATEGORIES.favoritos.slug}` },
+const routes = [
+  { title: CATEGORIES.health.name, href: `/${CATEGORIES.health.slug}` },
+  { title: CATEGORIES.lifestyle.name, href: `/${CATEGORIES.lifestyle.slug}` },
+  { title: CATEGORIES.food.name, href: `/${CATEGORIES.food.slug}` },
+  { title: CATEGORIES.fashion.name, href: `/${CATEGORIES.fashion.slug}` },
+  { title: CATEGORIES.fitness.name, href: `/${CATEGORIES.fitness.slug}` },
+  { title: CATEGORIES.advice.name, href: `/${CATEGORIES.advice.slug}` },
+  { title: 'Favorites', href: '/favorites' },
 ]
 
 export default function Navbar() {
@@ -23,19 +21,16 @@ export default function Navbar() {
   return (
     <nav className=" w-fit h-full flex items-center">
       <ul className=" w-full flex items-center justify-around gap-4 xl:gap-6">
-        {links.map((link, index) => {
+        {routes.map((link, index) => {
           const isActive = pathname === link.href
           return (
             <li
               key={index}
-              className={
-                poppinsReg400.className +
-                `  ${
-                  isActive
-                    ? ' bg-EpaPrimaryDark border-2'
-                    : 'bg-transparent border-[1px]'
-                } h-fit text-EpaWhite border-EpaWhite hover:scale-110 cursor:pointer rounded-full`
-              }
+              className={`  ${
+                isActive
+                  ? ' bg-primaryDark border-2'
+                  : 'bg-transparent border-[1px]'
+              } h-fit font-poppins font-normal text-white border-white hover:scale-110 cursor:pointer rounded-full`}
             >
               <Link
                 className=" px-2 py-1 text-sm xl:text-base flex items-center justify-center rounded-[inherit]"

@@ -1,7 +1,9 @@
+import { CATEGORIES } from './constants'
+
 export function cleanDataPosts({
   posts,
   categorySlug,
-  allCategoriesData,
+  allCategoriesData = CATEGORIES,
   videosCategoryID,
 }) {
   // process the content and return an object with id, title, images array, paragraph excerpt array
@@ -37,13 +39,13 @@ export function cleanDataPosts({
       category:
         categorySlug !== 0
           ? categorySlug
-          : allCategoriesData.find(
-              (categ) =>
-                categ.id ===
-                post?.categories?.filter((cat) => cat !== videosCategoryID)[0]
+          : Object.values(allCategoriesData).find((categ) =>
+              post?.categories.includes(categ.id)
             )?.slug || '',
       title: post.title.rendered,
+      slug: post.slug,
       excerpt: pExcerpt[0],
+      tags: post.tags,
       images: imgArray,
     })
   }

@@ -25,7 +25,6 @@ const {
   iconoModa,
   iconoBelleza,
   iconoRecetas,
-  iconoCosmic,
 } = configSiteStatic.icons
 
 export const CATEGORIES = {
@@ -178,41 +177,3 @@ export const staticCoverRecetas = {
   href: `/${CATEGORIES.recetas.slug}`,
 }
 
-export const sliderSidebarCategories = [
-  {
-    id: 1,
-    name: CATEGORIES.bienestar.name,
-    imgSrc: coverBienestar,
-    href: `/${CATEGORIES.bienestar.slug}`,
-  },
-  {
-    id: 2,
-    name: CATEGORIES.moda.name,
-    imgSrc: coverModa,
-    href: `/${CATEGORIES.moda.slug}`,
-  },
-  {
-    id: 3,
-    name: CATEGORIES.belleza.name,
-    imgSrc: coverBelleza,
-    href: `/${CATEGORIES.belleza.slug}`,
-  },
-  {
-    id: 4,
-    name: CATEGORIES.recetas.name,
-    imgSrc: coverRecetas,
-    href: `/${CATEGORIES.recetas.slug}`,
-  },
-  {
-    id: 5,
-    name: CATEGORIES.amor.name,
-    imgSrc: coverAmor,
-    href: `/${CATEGORIES.amor.slug}`,
-  },
-  {
-    id: 6,
-    name: CATEGORIES.cosmic.name,
-    imgSrc: coverCosmic,
-    href: `/${CATEGORIES.cosmic.slug}`,
-  },
-]

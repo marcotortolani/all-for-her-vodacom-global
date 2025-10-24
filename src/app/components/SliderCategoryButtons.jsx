@@ -1,99 +1,80 @@
-"use client";
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { useState, useRef } from "react";
-import { CATEGORIES } from "@/utils/static_data";
-import { configSiteStatic } from "../../../configSiteStatic";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, Navigation } from "swiper/modules";
-import SwiperCore from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
+'use client'
+import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useState, useRef } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination, Autoplay, Navigation } from 'swiper/modules'
+import SwiperCore from 'swiper'
+import 'swiper/css'
+import 'swiper/css/pagination'
 
-import { openSansItalic } from "../../utils/fonts";
-import PaginationBullets from "./ui/PaginationBullets";
+import PaginationBullets from './ui/PaginationBullets'
 
-SwiperCore.use([Pagination]);
-
-const {
-  botonBienestar,
-  botonModa,
-  botonBelleza,
-  botonRecetas,
-  botonAmor,
-  botonCosmic,
-  botonVideos,
-} = configSiteStatic.icons;
+SwiperCore.use([Pagination])
 
 const categButtons = [
   {
     id: 1,
-    title: CATEGORIES.bienestar.name,
-    imgSrc: botonBienestar,
-    href: `/${CATEGORIES.bienestar.slug}`,
+    title: '',
+    imgSrc: '/images/health-button.webp',
+    href: '/health',
   },
   {
     id: 2,
-    title: CATEGORIES.moda.name,
-    imgSrc: botonModa,
-    href: `/${CATEGORIES.moda.slug}`,
+    title: '',
+    imgSrc: '/images/lifestyle-button.webp',
+    href: '/lifestlye',
   },
   {
     id: 3,
-    title: CATEGORIES.belleza.name,
-    imgSrc: botonBelleza,
-    href: `/${CATEGORIES.belleza.slug}`,
+    title: '',
+    imgSrc: '/images/food-button.webp',
+    href: '/food',
   },
   {
     id: 4,
-    title: CATEGORIES.recetas.name,
-    imgSrc: botonRecetas,
-    href: `/${CATEGORIES.recetas.slug}`,
+    title: '',
+    imgSrc: '/images/fashion-button.webp',
+    href: '/fashion',
   },
   {
     id: 5,
-    title: CATEGORIES.amor.name,
-    imgSrc: botonAmor,
-    href: `/${CATEGORIES.amor.slug}`,
+    title: '',
+    imgSrc: '/images/fitness-button.webp',
+    href: '/fitness',
   },
   {
     id: 6,
-    title: CATEGORIES.cosmic.name,
-    imgSrc: botonCosmic,
-    href: `/${CATEGORIES.cosmic.slug}`,
+    title: '',
+    imgSrc: '/images/advice-button.webp',
+    href: '/advice',
   },
-  {
-    id: 7,
-    title: CATEGORIES.videos.name,
-    imgSrc: botonVideos,
-    href: `/${CATEGORIES.videos.slug}`,
-  },
-];
+]
 
-const COLOR_BULLETS = "white";
-const SIZE_BULLETS = "default";
-const SLIDES_PER_VIEW = 3;
-const DELAY_PER_VIEW = 2500;
-const SPACE_BETWEEN_SLIDES = 0;
+const COLOR_BULLETS = 'white'
+const SIZE_BULLETS = 'default'
+const SLIDES_PER_VIEW = 3
+const DELAY_PER_VIEW = 2500
+const SPACE_BETWEEN_SLIDES = 0
 
 export default function SliderCategoryButtons() {
-  const [indexPag, setIndexPag] = useState(0);
-  const sliderRef = useRef(0);
+  const [indexPag, setIndexPag] = useState(0)
+  const sliderRef = useRef(0)
 
-  const qtyBullets = Object.keys(categButtons).length - SLIDES_PER_VIEW + 1;
+  const qtyBullets = Object.keys(categButtons).length - SLIDES_PER_VIEW + 1
 
   const pagination = {
     clickable: true,
-    type: "custom",
+    type: 'custom',
     renderCustom: function (i, className) {
-      setIndexPag(className);
-      return null;
+      setIndexPag(className)
+      return null
     },
-  };
+  }
 
   return (
-    <div className=" z-30 absolute bottom-0  w-full h-fit min-h-[120px]  flex flex-col items-center justify-end overflow-hidden  lg:hidden">
+    <div className=" z-30 absolute -bottom-10  w-full h-fit min-h-[120px]  flex flex-col items-center justify-end overflow-hidden  lg:hidden">
       <Swiper
         ref={sliderRef}
         slidesPerView={SLIDES_PER_VIEW}
@@ -130,8 +111,7 @@ export default function SliderCategoryButtons() {
               />
               <h4
                 className={
-                  openSansItalic.className +
-                  " absolute w-2/3 uppercase font-medium text-center text-[0.8rem] sm:text-sm text-EpaWhite text-shadow-sm shadow-black "
+                  ' absolute w-2/3 uppercase font-poppins italic font-medium text-center text-[0.8rem] sm:text-sm text-white text-shadow-sm shadow-black '
                 }
               >
                 {el.title}
@@ -148,5 +128,5 @@ export default function SliderCategoryButtons() {
         index={indexPag}
       />
     </div>
-  );
+  )
 }

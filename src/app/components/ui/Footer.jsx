@@ -1,18 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { poppinsReg400 } from '../../../utils/fonts'
-import { configSiteStatic } from '../../../../configSiteStatic.js'
+
 import { URL_LANDING_SUBS } from '@/config/config'
-const { logoHorizontal } = configSiteStatic.images
+
+import logoHorizontal from '../../../../public/images/brand-logo-horizontal.webp'
 
 export default function Footer() {
   return (
     <footer
-      className={
-        poppinsReg400.className +
-        ` w-full h-[25vh] min-h-[160px] max-h-[200px] py-6 mb-20 bg-EpaAccent  flex flex-col items-center justify-around gap-2`
-      }
+      className={` w-full h-[25vh] min-h-[160px] max-h-[200px] py-6 mb-20 bg-accent font-poppins font-normal flex flex-col items-center justify-around gap-2`}
     >
       <div className="w-full h-1/4 sm:h-2/5 md:h-1/3 flex items-center justify-center  cursor-default pointer-events-none">
         <Link
@@ -29,23 +26,23 @@ export default function Footer() {
         </Link>
       </div>
       <div className=" h-1/3 flex flex-col items-center gap-0 pointer-events-none cursor-defaul select-none">
-        <p className=" uppercase text-xs md:text-sm lg:text-base leading-4 text-EpaWhite">
+        <p className=" uppercase text-xs md:text-sm lg:text-base leading-4 text-white">
           Epa Mujer es un sitio de Media Moob S.A.
         </p>
-        <p className=" uppercase text-xs md:text-sm lg:text-base leading-4 text-EpaWhite">
+        <p className=" uppercase text-xs md:text-sm lg:text-base leading-4 text-white">
           Todos los derechos reservados.
         </p>
       </div>
       <Link
-        href={'/'}
-        className=" h-1/4 uppercase text-xs md:text-sm lg:text-base text-EpaPrimaryDark hover:text-EpaPrimary underline"
+        href={'/terms'}
+        className=" h-1/4 uppercase text-xs md:text-sm lg:text-base text-primaryDark hover:text-primary underline"
       >
         Términos y Condiciones
       </Link>
       <Link
         href={URL_LANDING_SUBS}
         target="_blank"
-        className=" h-1/4 uppercase text-xs md:text-sm lg:text-base text-EpaPrimaryDark hover:text-EpaPrimary underline"
+        className=" h-1/4 uppercase text-xs md:text-sm lg:text-base text-primaryDark hover:text-primary underline"
       >
         Suscripción
       </Link>

@@ -1,0 +1,26 @@
+import React from 'react'
+
+import { CATEGORIES } from '@/utils/constants'
+import SliderLatestPosts from './SliderLatestPosts'
+import StaticCover from './StaticCover'
+
+const staticCover = {
+  id: 1,
+  title: 'Fashion',
+  imgSrc: '/images/fashion-banner.webp',
+  href: '/fashion',
+}
+
+export default async function FashionSummary() {
+  const cat = CATEGORIES.fashion
+
+  return (
+    <section className=" z-50 w-full md:w-5/6 lg:w-4/6 lg:max-w-[900px] h-fit mt-14 p-0 pb-1 relative top-0 flex flex-col items-center">
+      <StaticCover elem={staticCover} />
+
+      <div className=" w-screen  h-full pt-6 flex items-center justify-center md:bg-primary md:bg-opacity-80 ">
+        <SliderLatestPosts id={cat.id} qty={4} categorySlug={cat.slug} />
+      </div>
+    </section>
+  )
+}

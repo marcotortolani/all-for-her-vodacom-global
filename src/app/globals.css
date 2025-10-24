@@ -15,30 +15,6 @@
     --background-end-rgb: 0, 0, 0;
   }
 } */
-/* 
-@font-face {
-  font-family: "openSansLight";
-  src: local("/public/assets/fonts/OpenSans-Light.ttf");
-}
-@font-face {
-  font-family: "abrilFatface";
-  src: local("/public/assets/fonts/AbrilFatface-Regular.ttf");
-} */
-
-@font-face {
-  font-family: 'textLight';
-  src: local('/public/assets/fonts/Poppins-Light.ttf');
-}
-
-@font-face {
-  font-family: 'textRegular';
-  src: local('/public/assets/fonts/Poppins-Regular.ttf');
-}
-
-@font-face {
-  font-family: 'textMedium';
-  src: local('/public/assets/fonts/Poppins-Medium.ttf');
-}
 
 @keyframes animationImageBackground {
   0% {
@@ -57,6 +33,19 @@
 
     /* background-size: 150%; */
   }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
 }
 
 /* body {
@@ -79,7 +68,7 @@ input[type='text'] .search-bar::before {
   position: absolute;
   top: 0;
   /* color: black; */
-  background: url('../../public/assets/icons/IconoBuscarBlack.webp');
+  background: url('../../public/old/icons/IconoBuscarBlack.webp');
   background-color: blue;
   background-size: cover;
 }

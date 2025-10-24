@@ -17,7 +17,7 @@ function cleanDataCategories({ dataCategories }) {
 export default async function VideosPage() {
   const cat = CATEGORIES.videos
 
-  const dataCategories = await getData('categories?per_page=50')
+  const { data: dataCategories } = await getData('categories?per_page=50')
 
   const dataCatCleaned = cleanDataCategories({ dataCategories })
   const categoryID = dataCatCleaned.find((categ) => categ.name === cat.name).id

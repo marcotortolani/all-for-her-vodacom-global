@@ -3,28 +3,27 @@ import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { poppinsReg500 } from '../../../utils/fonts'
-
 export default function Breadcrumb({ homeElement, separator }) {
   const paths = usePathname()
 
-  const pathNames = paths
+  let pathNames = paths
     .split('/')
     .map((path) => (path === '' ? homeElement : path))
     .filter((path) => !/^\d+$/.test(path))
 
+  if (pathNames.includes('editorial') || pathNames.includes('video')) {
+    pathNames.pop()
+  }
+
   return (
     <div
-      className={poppinsReg500.className + ' z-20  w-full h-10 flex md:p-0  '}
+      className={' z-20  w-full h-10 flex md:p-0 font-poppins font-medium  '}
     >
-      <ul className=" w-full h-full flex">
-        {pathNames.map((el, i) => (
+      <ul className=" w-full h-full flex items-center justify-start gap-1 lg:gap-2">
+        {pathNames.slice(0, 3).map((el, i) => (
           <li key={i} className=" flex items-center">
             <Link
-              className={
-                poppinsReg500.className +
-                ` px-3 py-1 capitalize text-xs md:text-sm text-EpaWhite bg-EpaPrimary cursor-pointer rounded-full`
-              }
+              className={` px-3 py-1 capitalize font-poppins font-medium text-xs md:text-sm text-white bg-primary cursor-pointer hover:scale-105 transition-all duration-200 ease-in-out rounded-full`}
               href={`${
                 i === 0
                   ? '/'

@@ -1,22 +1,21 @@
-"use client";
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { useState, useRef } from "react";
+'use client'
+import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useState, useRef } from 'react'
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, Navigation } from "swiper/modules";
-import SwiperCore from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination, Autoplay, Navigation } from 'swiper/modules'
+import SwiperCore from 'swiper'
+import 'swiper/css'
+import 'swiper/css/pagination'
 
-import PaginationBullets from "./ui/PaginationBullets";
+import PaginationBullets from './ui/PaginationBullets'
 
-SwiperCore.use([Pagination]);
+SwiperCore.use([Pagination])
 
-import { poppinsReg400 } from "@/utils/fonts";
-import videoIcon from "../../../public/assets/icons/IconoVideo2.webp";
-import ImageMissing from "./ImageMissing";
+import videoIcon from '../../../public/old/icons/IconoVideo2.webp'
+import ImageMissing from './ImageMissing'
 
 export default function SliderVideoPosts({
   sliderElements,
@@ -26,19 +25,19 @@ export default function SliderVideoPosts({
   colorBullets,
   sizeBullets,
 }) {
-  const [indexPag, setIndexPag] = useState(0);
-  const sliderRef = useRef(0);
+  const [indexPag, setIndexPag] = useState(0)
+  const sliderRef = useRef(0)
 
-  const qtyBullets = Object.keys(sliderElements).length - slidesPerView + 1;
+  const qtyBullets = Object.keys(sliderElements).length - slidesPerView + 1
 
   const pagination = {
     clickable: true,
-    type: "custom",
+    type: 'custom',
     renderCustom: function (i, className) {
-      setIndexPag(className);
-      return null;
+      setIndexPag(className)
+      return null
     },
-  };
+  }
   return (
     <div className=" w-screen md:w-full  lg:max-w-4xl lg:w-full h-full px-2 md:px-0 lg:px-0 pt-2  ">
       {sliderElements.length > 0 && (
@@ -99,10 +98,7 @@ export default function SliderVideoPosts({
                       />
                     </div>
                     <h3
-                      className={
-                        poppinsReg400.className +
-                        ` w-full h-1/3 text-start text-[0.6rem] sm:text-xs lg:text-base  text-EpaWhite text-shadow-sm leading-3 shadow-black `
-                      }
+                      className={` w-full h-1/3 font-poppins font-normal text-start text-[0.6rem] sm:text-xs lg:text-base  text-white text-shadow-sm leading-3 shadow-black `}
                     >
                       {post.title}
                     </h3>
@@ -121,5 +117,5 @@ export default function SliderVideoPosts({
         </>
       )}
     </div>
-  );
+  )
 }

@@ -5,8 +5,6 @@ import Image from 'next/image'
 import { useState, useRef } from 'react'
 import parse from 'html-react-parser'
 
-import { poppinsReg500 } from '../../utils/fonts'
-
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay, Navigation } from 'swiper/modules'
 import SwiperCore from 'swiper'
@@ -18,7 +16,7 @@ import ButtonSeePost from './ui/ButtonSeePost'
 
 SwiperCore.use([Pagination])
 
-import iconEye from '../../../public/assets/icons/IconoOjo.png'
+import iconEye from '../../../public/old/icons/IconoOjo.png'
 import ImageMissing from './ImageMissing'
 
 export default function SliderCover({
@@ -62,18 +60,15 @@ export default function SliderCover({
         navigation={false}
         className="mySwiper w-full h-full px-0 overflow-hidden flex justify-between items-center gap-6 "
       >
-        {sliderElements?.map((elem) => (
-          <SwiperSlide className={` w-full h-fit`} key={elem.id}>
+        {sliderElements?.map((elem, index) => (
+          <SwiperSlide className={` w-full h-fit`} key={elem.id + '-' + index}>
             <div
               className={` w-full  h-[30vh] min-h-[150px] max-h-[200px] sm:max-h-[250px] relative flex flex-col items-center justify-center rounded-lg `}
             >
               <div className=" w-full h-full rounded-[inherit]">
                 {tagElement && (
                   <span
-                    className={
-                      poppinsReg500.className +
-                      ` z-20 absolute top-4 left-4 p-1 text-xs capitalize text-EpaPrimary bg-EpaPostButton rounded-md `
-                    }
+                    className={` z-20 absolute top-4 left-4 p-1 font-poppins font-medium text-xs capitalize text-primary bgpostButton rounded-md `}
                   >
                     {elem.category}
                   </span>
@@ -89,7 +84,7 @@ export default function SliderCover({
                     loading="eager"
                   />
                 ) : (
-                  <ImageMissing text={''} colorBg={'bg-EpaPrimary'} />
+                  <ImageMissing text={''} colorBg={'bg-primary'} />
                 )}
               </div>
 
@@ -102,10 +97,7 @@ export default function SliderCover({
                   icon={iconEye}
                 />
                 <h3
-                  className={
-                    poppinsReg500.className +
-                    ` w-full px-6 text-left text-lg md:text-xl xl:text-2xl text-EpaWhite text-shadow-sm leading-5 line-clamp-2 shadow-black`
-                  }
+                  className={` w-full px-6 font-poppins font-medium text-left text-lg md:text-xl xl:text-2xl text-white text-shadow-sm leading-5 line-clamp-2 shadow-black`}
                 >
                   {parse(elem.title)}
                 </h3>

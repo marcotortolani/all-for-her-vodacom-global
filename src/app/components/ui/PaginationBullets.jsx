@@ -1,45 +1,45 @@
-import React from "react";
+import React from 'react'
 
 const colorSet = {
   white: {
-    bg: "bg-white",
-    border: "border-white",
+    bg: 'bg-white',
+    border: 'border-white',
   },
   default: {
-    bg: "bg-EpaPostButton",
-    border: "border-EpaPostButton",
+    bg: 'bg-black',
+    border: 'border-black',
   },
   primary: {
-    bg: "bg-EpaPrimary",
-    border: "border-EpaPrimary",
+    bg: 'bg-primary',
+    border: 'border-primary',
   },
   gray: {
-    bg: "bg-slate-300 opacity-50",
-    border: "border-slate-300 opacity-50",
+    bg: 'bg-slate-300 opacity-50',
+    border: 'border-slate-300 opacity-50',
   },
-};
+}
 
 const sizeSet = {
   sm: {
-    circle: "w-2 h-2",
-    ellipse: "w-4 h-2",
+    circle: 'w-2 h-2',
+    ellipse: 'w-4 h-2',
   },
   default: {
-    circle: "w-3 h-3",
-    ellipse: "w-6 h-3",
+    circle: 'w-3 h-3',
+    ellipse: 'w-6 h-3',
   },
-};
+}
 
 export default function PaginationBullets({
-  color = "default",
-  size = "default",
+  color = 'default',
+  size = 'default',
   qtyBullets,
   index,
 }) {
   return (
     <div
       className={` w-full h-fit ${
-        size === "sm" ? "py-2" : "py-4"
+        size === 'sm' ? 'py-2' : 'py-4'
       } flex items-center justify-center gap-2`}
     >
       {[...Array(qtyBullets)].map((bullet, i) =>
@@ -56,5 +56,5 @@ export default function PaginationBullets({
         )
       )}
     </div>
-  );
+  )
 }

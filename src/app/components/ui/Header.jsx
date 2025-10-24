@@ -4,14 +4,13 @@ import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { abrilFatface } from '../../../utils/fonts'
-import { configSiteStatic } from '../../../../configSiteStatic.js'
 import SidebarMenu from './SidebarMenu'
 import BurguerMenu from './BurguerMenu'
 import Navbar from './Navbar'
 import SearchBar from './SearchBar'
 
-const { logoHorizontal, logoVertical } = configSiteStatic.images
+import logoHorizontal from '../../../../public/images/brand-logo-horizontal.webp'
+import logoVertical from '../../../../public/images/brand-logo-vertical.webp'
 
 export default function Header() {
   const [isNavbarVisible, setIsNavbarVisible] = useState(true)
@@ -63,21 +62,19 @@ export default function Header() {
         isNavbarVisible ? 'top-5 ' : ' -top-36  '
       } transition-all z-20 fixed lg:top-0 lg:absolute w-full h-fit flex justify-center`}
     >
-      <div className=" absolute top-4 lg:top-0 w-screen h-20 hidden lg:flex items-center justify-evenly bg-EpaPrimary shadow-md shadow-gray-800  rounded-b-2xl">
+      <div className=" absolute top-4 lg:top-0 w-screen h-20 hidden lg:flex items-center justify-evenly bg-black/80 shadow-md shadow-gray-800  rounded-b-2xl">
         <div className=" w-1/6 h-full flex items-center justify-center  cursor-default pointer-events-none">
           <Link
             href="/"
             className=" w-fit h-1/3 xl:h-1/2 flex items-center justify-center transition-all hover:scale-110 cursor-pointer pointer-events-auto"
           >
-            {logoHorizontal && (
-              <Image
-                width={250}
-                height={250}
-                className="w-auto h-full"
-                src={logoHorizontal}
-                alt="Logo Epa Mujer"
-              />
-            )}
+            <Image
+              width={250}
+              height={250}
+              className="w-auto h-full"
+              src={logoHorizontal}
+              alt="Logo Epa Mujer"
+            />
           </Link>
         </div>
         <Navbar />
@@ -91,40 +88,52 @@ export default function Header() {
         onClose={closeSidebar}
       />
 
-      <div className=" lg:hidden  w-[90%] max-w-[460px] h-20 flex flex-col items-center justify-center bg-EpaPrimary rounded-2xl ">
-        <div className="w-full h-full flex items-center justify-around">
-          <BurguerMenu onOpen={openSidebar} />
+      <div
+        className={`${
+          sectionName === 'home'
+            ? ' bg-black/80 backdrop-blur-md '
+            : ' bg-primary '
+        } lg:hidden  w-[90%] max-w-[460px] h-20 flex flex-col items-center justify-center rounded-2xl`}
+      >
+        <div
+          className={`${
+            sectionName === 'home' ? ' justify-between ' : ' justify-center '
+          } relative w-full px-4 h-full flex items-center `}
+        >
+          <div className="">
+            <BurguerMenu onOpen={openSidebar} />
+          </div>
 
           {sectionName === 'home' ? (
             <>
               <Image
                 width={250}
                 height={250}
-                className="w-2/4 max-w-[250px]"
+                className="w-full max-w-[160px]"
                 src={logoHorizontal}
-                alt="Logo Epa Mujer"
+                alt="Brand Logo Horizontal"
               />
-              <div className=" w-7 h-5 bg-transparent"></div>
+              <div className="w-10"></div>
             </>
           ) : (
             <>
-              <div
-                className={
-                  abrilFatface.className +
-                  `px-4 py-[0.1rem] text-EpaPrimary bg-EpaBackground rounded-full cursor-default pointer-events-none `
-                }
-              >
-                <span className=" mx-4 capitalize text-2xl">{sectionName}</span>
-              </div>
-              <Link href="/" className=" h-2/5 ">
-                <Image
-                  className=" w-auto h-full"
-                  width={120}
-                  height={120}
-                  src={logoVertical}
-                  alt="Logo Epa Mujer"
-                />
+              <Link href="/" className=" w-full h-full pl-6 ">
+                <div
+                  className={`relative w-full h-full flex items-center justify-center text-white font-abrilFatface capitalize text-2xl text-center tracking-wider rounded-full cursor-default pointer-events-none `}
+                >
+                  <span className="absolute -translate-x-1.5 translate-y-0.5 w-full z-0 text-black/40">
+                    {sectionName}
+                  </span>
+                  <span className=" z-20 w-full ">{sectionName}</span>
+                </div>
               </Link>
+              <Image
+                width={76}
+                height={35}
+                className="w-full max-w-[70px]"
+                src={logoVertical}
+                alt="Brand Logo Vertical"
+              />
             </>
           )}
         </div>
