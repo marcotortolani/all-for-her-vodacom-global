@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { TAGS } from '@/utils/constants'
-import { getPostsByCategoryId } from '@/utils/api'
+import { getVideoPosts } from '@/utils/api'
 import ImageMissing from '../ImageMissing'
 import { cleanDataPosts } from '@/utils/functions'
 import parse from 'html-react-parser'
@@ -12,7 +12,7 @@ import PostCardSkeleton from '@/app/components/pagination/PostCardSkeleton'
 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-export default function GridPostsPagination({ category }) {
+export default function GridVideosPagination() {
   const [posts, setPosts] = useState([])
   const [totalPages, setTotalPages] = useState(0)
   const [page, setPage] = useState(1)
@@ -22,8 +22,8 @@ export default function GridPostsPagination({ category }) {
     const getDataPosts = async () => {
       setLoading(true)
       try {
-        const data = await getPostsByCategoryId({
-          id: category.id,
+        const data = await getVideoPosts({
+          tagID: TAGS['video'].id,
           page: page,
           perPage: 12,
         })
@@ -38,7 +38,7 @@ export default function GridPostsPagination({ category }) {
     }
 
     getDataPosts()
-  }, [page, category])
+  }, [page])
 
   const handlePrevPage = () => {
     if (page > 1) {
@@ -74,20 +74,15 @@ export default function GridPostsPagination({ category }) {
       {!loading && posts?.length > 0 && (
         <div className=" grid w-full grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4 xl:gap-6 ">
           {posts.map((post) => {
-            const isVideo =
-              post?.tags?.includes(TAGS.video.id) || post.video.url.length
-                ? 'videos'
-                : 'editorial'
-
             const [postCleaned] = cleanDataPosts({
               posts: [post],
-              categorySlug: category.slug,
+              categorySlug: 0,
             })
 
             return (
               <Link
                 key={postCleaned.id}
-                href={`/${category.slug}/${isVideo}/${postCleaned.slug}`}
+                href={`/videos/${postCleaned.slug}`}
                 className="relative w-full aspect-[9/12] group overflow-hidden rounded-lg shadow-md transition-transform hover:scale-105"
               >
                 <div className="relative z-0 w-full h-full rounded-[inherit]">
@@ -102,7 +97,7 @@ export default function GridPostsPagination({ category }) {
                     <ImageMissing />
                   )}
                   <div className="z-10 absolute top-0 w-full h-full flex items-center justify-center bg-black/30 rounded-[inherit]">
-                    {isVideo === 'videos' && <PlayCircle />}
+                    <PlayCircle />
                   </div>
                 </div>
                 <div className="absolute top-0 w-full h-full p-2 lg:p-4 xl:p-6 flex items-end">

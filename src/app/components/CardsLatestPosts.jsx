@@ -25,7 +25,7 @@ export default async function CardsLatestPosts({ id, qty, categorySlug }) {
       <ul className=" w-full h-full py-4 lg:my-4 grid grid-cols-2 grid-rows-1  gap-4 lg:gap-6 select-none">
         {cardPosts?.map((post) => {
           const isVideo = post?.tags?.includes(TAGS.video.id)
-            ? 'video'
+            ? 'videos'
             : 'editorial'
           return (
             <li
@@ -45,7 +45,7 @@ export default async function CardsLatestPosts({ id, qty, categorySlug }) {
                   <ImageMissing />
                 )}
                 <div className=" z-10 absolute top-0 w-full h-full flex items-center justify-center bg-black/30 rounded-[inherit]">
-                  {isVideo == 'video' && <PlayCircle />}
+                  {isVideo === 'videos' && <PlayCircle />}
                 </div>
               </div>
               <div className="z-20 absolute bottom-0 w-full h-full pb-0 flex flex-col items-center justify-end gap-2 select-none rounded-b-[inherit]">

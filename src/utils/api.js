@@ -2,6 +2,7 @@
 
 'use server'
 import { API_CONTENT } from '@/config/config'
+import { TAGS } from './constants'
 
 const REVALIDATE_CACHE = 3600 * 12 // revalidate every 12 hours
 
@@ -78,9 +79,24 @@ export async function getPostsByCategoryId({
   }
 }
 
+export async function getVideoPosts({
+  tagID = TAGS['video'].id,
+  page = 1,
+  perPage = 10,
+}) {
+  const response = await getData(
+    `posts?per_page=${perPage}&page=${page}&tags=${tagID}`
+  )
+  return {
+    posts: response.data,
+    totalPages: response.totalPages,
+    totalPosts: response.totalPosts,
+  }
+}
+
 export async function getVideoPostsByCategoryId({
   id,
-  tagID = 14,
+  tagID = TAGS['video'],
   page = 1,
   perPage = 20,
 }) {

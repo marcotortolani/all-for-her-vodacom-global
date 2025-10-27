@@ -59,9 +59,11 @@ export default function SliderRecommended({ posts, categorySlug }) {
       className="mySwiper w-full max-w-2xl md:max-w-2xl lg:max-w-4xl h-full lg:min-h-[250px] px-0 overflow-hidden flex justify-center items-center gap-6 "
     >
       {posts?.map((post) => {
-        const isVideo = post?.tags?.includes(TAGS.video.id)
-          ? 'video'
-          : 'editorial'
+        const isVideo =
+          post?.tags?.includes(TAGS.video.id) || post.video.url.length > 0
+            ? 'videos'
+            : 'editorial'
+
         return (
           <SwiperSlide className={` w-full  h-full`} key={post?.id}>
             <div
@@ -73,19 +75,19 @@ export default function SliderRecommended({ posts, categorySlug }) {
                 className=" w-full h-full rounded-[inherit]"
               >
                 <div className=" relative z-0 w-full h-full rounded-[inherit]">
-                  {post?.images.length > 0 ? (
+                  {post?.featured_image || post?.images.length > 0 ? (
                     <Image
                       className={` relative w-full h-full object-center object-cover rounded-[inherit] cursor-default pointer-events-none select-none`}
                       width={220}
                       height={220}
-                      src={post?.images[0]}
+                      src={post?.featured_image?.[0] || post?.images[0]}
                       alt={`Image ${post?.title}`}
                     />
                   ) : (
                     <ImageMissing />
                   )}
                   <div className=" z-10 w-full h-full flex items-center justify-center absolute top-0 bg-black/30 rounded-[inherit]">
-                    {isVideo === 'video' && <PlayCircle />}
+                    {isVideo === 'videos' && <PlayCircle />}
                   </div>
                 </div>
 

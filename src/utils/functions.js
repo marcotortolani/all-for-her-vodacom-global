@@ -47,6 +47,8 @@ export function cleanDataPosts({
       excerpt: pExcerpt[0],
       tags: post.tags,
       images: imgArray,
+      featured_image: post.featured_image,
+      video: post.video,
     })
   }
   return data

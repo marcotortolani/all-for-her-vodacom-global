@@ -27,10 +27,7 @@ export default async function SectionRecommended({ category, qty }) {
           </h4>
         </div>
 
-        <SliderRecommended
-          posts={posts}
-          categorySlug={category.slug}
-        />
+        <SliderRecommended posts={posts} categorySlug={category.slug} />
       </div>
     </section>
   )

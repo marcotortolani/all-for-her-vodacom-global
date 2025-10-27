@@ -35,7 +35,7 @@ export default async function GridLatestPosts({ id, categorySlug }) {
 }
 
 const ItemLatestPost = ({ post, categorySlug }) => {
-  const isVideo = post?.tags?.includes(TAGS.video.id) ? 'video' : 'editorial'
+  const isVideo = post?.tags?.includes(TAGS.video.id) ? 'videos' : 'editorial'
 
   return (
     <li
@@ -66,7 +66,7 @@ const ItemLatestPost = ({ post, categorySlug }) => {
             {parse(post?.title || '')}
           </h3>
         </div>
-        {isVideo === 'video' && (
+        {isVideo === 'videos' && (
           <div className="  z-20 absolute bottom-0 w-full h-full flex items-center justify-center ">
             <PlayCircle className=" w-8 h-8 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" />
           </div>

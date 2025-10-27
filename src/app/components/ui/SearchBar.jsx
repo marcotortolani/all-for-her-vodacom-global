@@ -83,7 +83,7 @@ export default function SearchBar() {
           <ul className=" w-full h-fit p-2 py-1">
             {results?.map((result) => {
               const isVideo = result?.tags?.includes(TAGS.video.id)
-                ? 'video'
+                ? 'videos'
                 : 'editorial'
 
               return (

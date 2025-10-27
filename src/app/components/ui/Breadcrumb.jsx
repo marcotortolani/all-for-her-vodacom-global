@@ -11,7 +11,11 @@ export default function Breadcrumb({ homeElement, separator }) {
     .map((path) => (path === '' ? homeElement : path))
     .filter((path) => !/^\d+$/.test(path))
 
-  if (pathNames.includes('editorial') || pathNames.includes('video')) {
+  if (
+    pathNames.includes('editorial') ||
+    pathNames.includes('video') ||
+    pathNames.includes('videos')
+  ) {
     pathNames.pop()
   }
 

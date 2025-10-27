@@ -1,5 +1,4 @@
 import React from 'react'
-
 import parse from 'html-react-parser'
 import { cleanDataPosts } from '@/utils/functions'
 import { getDataPostBySlug } from '@/utils/api'

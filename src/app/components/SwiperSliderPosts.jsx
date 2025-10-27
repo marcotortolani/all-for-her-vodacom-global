@@ -84,7 +84,7 @@ export default function SwiperSliderPosts({
       >
         {posts?.map((post) => {
           const isVideo = post?.tags?.includes(TAGS.video.id)
-            ? 'video'
+            ? 'videos'
             : 'editorial'
           return (
             <SwiperSlide className={` w-full  h-full`} key={post?.id}>
@@ -105,7 +105,7 @@ export default function SwiperSliderPosts({
                     <ImageMissing />
                   )}
                   <div className=" z-10 w-full h-full flex items-center justify-center absolute top-0 bg-black/30 rounded-[inherit]">
-                    {isVideo === 'video' && <PlayCircle />}
+                    {isVideo === 'videos' && <PlayCircle />}
                   </div>
                 </div>
 

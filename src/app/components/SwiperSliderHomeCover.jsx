@@ -60,7 +60,7 @@ export default function SwiperSliderHomeCover({
       >
         {posts?.map((post, index) => {
           const isVideo = post?.tags?.includes(TAGS.video.id)
-            ? 'video'
+            ? 'videos'
             : 'editorial'
 
           return (

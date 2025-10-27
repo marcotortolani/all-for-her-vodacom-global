@@ -70,7 +70,7 @@ export default function SliderSidebar() {
       >
         {posts?.map((post) => {
           const isVideo = post?.tags?.includes(TAGS.video.id)
-            ? 'video'
+            ? 'videos'
             : 'editorial'
           return (
             <SwiperSlide
