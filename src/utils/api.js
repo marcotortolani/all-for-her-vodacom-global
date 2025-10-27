@@ -70,6 +70,7 @@ export async function getPostsByCategoryId({
   const response = await getData(
     `posts?per_page=${perPage}&page=${page}&categories=${id}&tags_exclude=${tagExclude}`
   )
+
   return {
     posts: response.data,
     totalPages: response.totalPages,

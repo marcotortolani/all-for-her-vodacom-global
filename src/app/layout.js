@@ -3,6 +3,8 @@ import dynamic from 'next/dynamic'
 import Providers from '@/providers/Providers'
 import './globals.css'
 
+import dictionary from '../dictionary/lang.json'
+
 export const openSans = Open_Sans({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
@@ -35,24 +37,22 @@ const Footer = dynamic(() => import('./components/ui/Footer'))
 const DownbarMobile = dynamic(() => import('./components/ui/DownbarMobile'))
 
 export const metadata = {
-  title: 'All For Her',
-  description:
-    'The best content for the strongest women. Desgined & developed by Media Moob',
+  title: dictionary['title'],
+  description: dictionary['description'],
   version: '1.2.0',
   openGraph: {
-    title: 'All For Her',
-    description:
-      'The best content for the strongest women. Desgined & developed by Media Moob',
+    title: dictionary['title'],
+    description: dictionary['description'],
     url: '',
-    siteName: 'AllForHer',
-    locale: 'en_US',
+    siteName: dictionary['siteName'],
+    locale: dictionary['locale'],
     type: 'website',
   },
 }
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es">
+    <html lang={dictionary['lang']}>
       <body
         className={`${abrilFatface.variable} ${poppins.variable} relative w-screen overflow-scroll overflow-x-hidden scroll-smooth flex flex-col items-center bg-black font-poppins`}
       >

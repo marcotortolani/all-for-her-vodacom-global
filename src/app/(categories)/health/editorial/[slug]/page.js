@@ -11,10 +11,7 @@ export default function page({ params }) {
       className={`z-0 mt-0 mb-10 w-full h-full min-h-screen p-4 flex flex-col items-center gap-4 bg-white rounded-xl`}
     >
       <PagePost slug={slug} categorySlug={'health'} />
-
-      <SectionRecommended category={CATEGORIES.food} qty={6} />
-
-      <div className="w-full h-20"></div>
+      <SectionRecommended category={CATEGORIES.food} qty={6} />{' '}
     </main>
   )
 }

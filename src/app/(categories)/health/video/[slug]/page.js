@@ -12,8 +12,6 @@ export default function page({ params }) {
     >
       <PagePost id={id} />
       <SectionRecommended category={CATEGORIES.amor} qty={2} />
-
-      <div className="w-full h-20"></div>
     </main>
   )
 }

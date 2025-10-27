@@ -22,11 +22,12 @@ export default function GridPostsPagination({ category }) {
     const getDataPosts = async () => {
       setLoading(true)
       try {
-        const { posts: data } = await getPostsByCategoryId({
+        const data = await getPostsByCategoryId({
           id: category.id,
           page: page,
           perPage: 12,
         })
+
         setPosts(data.posts)
         setTotalPages(data.totalPages)
       } catch (error) {
