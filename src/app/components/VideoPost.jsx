@@ -1,14 +1,13 @@
 import React from 'react'
-import Image from 'next/image'
+
 import parse from 'html-react-parser'
 import { cleanDataPosts } from '@/utils/functions'
 import { getDataPostBySlug } from '@/utils/api'
 
-import ImageMissing from './ImageMissing'
 import ButtonLikeFav from './ui/ButtonLikeFav'
 import { sanitizeContent } from '@/lib/utils'
 
-export default async function PagePost({ slug, categorySlug }) {
+export default async function VideoPost({ slug, categorySlug }) {
   const [dataPost] = await getDataPostBySlug(slug)
 
   if (!dataPost) return null
@@ -19,6 +18,10 @@ export default async function PagePost({ slug, categorySlug }) {
     posts: new Array(dataPost),
     categorySlug: categorySlug,
   })
+
+  const vimeoNumber = dataPost?.video?.url
+    ?.split('/')
+    .pop(dataPost.video.url.split('/').length - 1)
 
   return (
     <section className="relative w-full md:w-5/6 lg:w-4/6 lg:max-w-[900px] flex flex-col items-center gap-4 ">
@@ -31,30 +34,24 @@ export default async function PagePost({ slug, categorySlug }) {
         {parse(post[0]?.title || '')}
       </h3>
 
-      <div
-        className={` bgpostButton w-full h-[20vh] min-h-[100px] max-h-[120px] sm:max-h-[150px] mb-4 relative flex flex-col items-center justify-center rounded-lg lg:rounded-xl`}
-      >
-        {post?.featured_image || post[0].images.length > 0 ? (
-          <div className=" w-full h-full rounded-[inherit]">
-            <Image
-              className={`  w-full h-auto  object-cover rounded-[inherit]  `}
-              // width={220}
-              // height={160}
-              fill={true}
-              src={
-                post?.featured_image?.[0] ||
-                post[0].images[1] ||
-                post[0].images[0]
-              }
-              alt="Imagen Header Post"
-              loading="eager"
-            />
-          </div>
-        ) : (
-          <ImageMissing text={''} colorBg={'bg-primary'} />
+      <div className=" w-full aspect-video rounded-lg lg:rounded-xl">
+        {vimeoNumber && (
+          <iframe
+            src={
+              'https://player.vimeo.com/video/' +
+              vimeoNumber +
+              `?background=0&badge=1&autoplay=0&autopause=1&byline=0&controls=1&pip=none&quality_selector=0`
+            }
+            className=" rounded-[inherit]"
+            loading="lazy"
+            width="100%"
+            height="100%"
+            allow="fullscreen"
+            allowFullScreen
+            autoPlay={false}
+            title={dataPost?.title.rendered}
+          ></iframe>
         )}
-
-        <div className=" z-10 absolute top-0 w-full h-full bg-black opacity-30 line-clamp-1 content-normal rounded-[inherit]" />
       </div>
       <div
         dangerouslySetInnerHTML={{ __html: content }}

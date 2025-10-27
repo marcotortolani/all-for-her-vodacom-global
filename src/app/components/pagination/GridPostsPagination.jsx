@@ -74,9 +74,10 @@ export default function GridPostsPagination({ category }) {
       {!loading && posts?.length > 0 && (
         <div className=" grid w-full grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4 xl:gap-6 ">
           {posts.map((post) => {
-            const isVideo = post?.tags?.includes(TAGS.video.id)
-              ? 'video'
-              : 'editorial'
+            const isVideo =
+              post?.tags?.includes(TAGS.video.id) || post.video.url.length
+                ? 'video'
+                : 'editorial'
 
             const [postCleaned] = cleanDataPosts({
               posts: [post],
@@ -90,11 +91,11 @@ export default function GridPostsPagination({ category }) {
                 className="relative w-full aspect-[9/12] group overflow-hidden rounded-lg shadow-md transition-transform hover:scale-105"
               >
                 <div className="relative z-0 w-full h-full rounded-[inherit]">
-                  {postCleaned?.images[0] ? (
+                  {post.featured_image || postCleaned?.images[0] ? (
                     <Image
                       className="relative w-full h-full object-center object-cover rounded-[inherit] cursor-default select-none"
                       fill
-                      src={postCleaned?.images[0]}
+                      src={post.featured_image[0] || postCleaned?.images[0]}
                       alt={`Image ${postCleaned?.title}`}
                     />
                   ) : (

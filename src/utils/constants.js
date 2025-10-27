@@ -33,7 +33,7 @@ export const CATEGORIES = {
 
 export const TAGS = {
   video: {
-    id: 0,
+    id: 43,
     name: 'Video',
     slug: 'video',
   },

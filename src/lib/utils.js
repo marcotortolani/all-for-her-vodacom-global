@@ -2,13 +2,14 @@ import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { parse } from 'node-html-parser'
 
+import dictionary from '../dictionary/lang.json'
+
 export function cn(...inputs) {
   return twMerge(clsx(inputs))
 }
 
 export const sanitizeContent = (content) => {
-  if (!content)
-    return 'Explora el mundo junto a nosotros. Descubre destinos, costumbres, sabores y consejos para viajar mejor. Acompáñanos en esta aventura y deja que cada historia te inspire a tu próxima travesía.'
+  if (!content) return dictionary['defaultText']
 
   const root = parse(content.replaceAll('&nbsp;', ''))
   root
