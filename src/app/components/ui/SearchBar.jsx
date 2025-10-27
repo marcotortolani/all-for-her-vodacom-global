@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import parse from 'html-react-parser'
 import { useState, useEffect } from 'react'
 
-import { searchData, getCategoryNameByPostId } from '@/utils/api'
+import { searchData } from '@/utils/api'
 
 import { configSiteStatic } from '../../../../configSiteStatic'
 const { iconoBuscarBlack } = configSiteStatic.icons
@@ -24,6 +24,7 @@ export default function SearchBar() {
       const resCleaned = results.map((res) => ({
         id: res.id,
         title: res.title.rendered,
+        slug: res.slug,
       }))
       setResults(resCleaned)
     })
@@ -44,15 +45,6 @@ export default function SearchBar() {
   function handleSearch(e) {
     e.preventDefault()
     setSearchTerm(inputValue)
-  }
-
-  function handleClick(id) {
-    getCategoryNameByPostId(id).then((catName) => {
-      setInputValue('')
-      setSearchTerm('')
-      setResults([])
-      router.push(`/${catName}/${id}`)
-    })
   }
 
   return (
@@ -89,19 +81,25 @@ export default function SearchBar() {
       {results.length > 0 && inputValue && (
         <div className=" -z-10 absolute top-10 w-[90vw] max-w-screen-md bg-primary-extralight/80 backdrop-blur-sm border-primary border-solid border-2 rounded-xl">
           <ul className=" w-full h-fit p-2 py-1">
-            {results?.map((result) => (
-              <li
-                key={result.id}
-                className="w-full my-3 px-2 bg-primary hover:bg-accent text-white rounded-lg"
-              >
-                <button
-                  onClick={() => handleClick(result.id)}
-                  className="w-full  overflow-hidden line-clamp-1 text-left hover:cursor-pointer "
+            {results?.map((result) => {
+              const isVideo = result?.tags?.includes(TAGS.video.id)
+                ? 'video'
+                : 'editorial'
+
+              return (
+                <li
+                  key={result.id}
+                  className="w-full my-3 px-2 bg-primary hover:bg-accent text-white rounded-lg"
                 >
-                  {parse(result.title)}
-                </button>
-              </li>
-            ))}
+                  <button
+                    onClick={() => router.push(`/${isVideo}/${result.slug}`)}
+                    className="w-full  overflow-hidden line-clamp-1 text-left hover:cursor-pointer "
+                  >
+                    {parse(result.title || '')}
+                  </button>
+                </li>
+              )
+            })}
           </ul>
         </div>
       )}

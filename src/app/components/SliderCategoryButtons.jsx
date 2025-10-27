@@ -24,7 +24,7 @@ const categButtons = [
     id: 2,
     title: '',
     imgSrc: '/images/lifestyle-button.webp',
-    href: '/lifestlye',
+    href: '/lifestyle',
   },
   {
     id: 3,

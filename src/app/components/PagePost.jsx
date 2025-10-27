@@ -10,6 +10,8 @@ import { sanitizeContent } from '@/lib/utils'
 
 export default async function PagePost({ slug, categorySlug }) {
   const [dataPost] = await getDataPostBySlug(slug)
+  
+  if (!dataPost) return null
 
   const content = sanitizeContent(dataPost.content?.rendered)
 

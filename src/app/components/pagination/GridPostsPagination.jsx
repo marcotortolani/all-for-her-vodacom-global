@@ -18,8 +18,6 @@ export default function GridPostsPagination({ category }) {
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(true)
 
-  console.log(posts)
-
   useEffect(() => {
     const getDataPosts = async () => {
       setLoading(true)
