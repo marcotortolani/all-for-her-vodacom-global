@@ -17,6 +17,8 @@ export default async function GridLatestPosts({ id, categorySlug }) {
     categorySlug,
   })
 
+  if (!cardPosts) return null
+
   return (
     <div className=" w-full h-full flex justify-center">
       <ul className=" w-full h-full py-4 lg:my-4 grid grid-cols-3 gap-2 lg:gap-6 select-none">

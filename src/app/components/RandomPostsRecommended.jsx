@@ -14,7 +14,7 @@ export default async function RandomPostsRecommended({
   qty,
   categorySlug,
 }) {
-  const dataPosts = await getPostsByCategoryId({ id })
+  const { posts: dataPosts } = await getPostsByCategoryId({ id })
   const randomPosts = cleanDataPosts({
     posts: getRandomPosts({ posts: dataPosts, qty: qty }),
     categorySlug: categorySlug,

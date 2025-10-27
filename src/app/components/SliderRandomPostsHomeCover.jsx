@@ -56,6 +56,8 @@ export default function SliderRandomPostsHomeCover({ posts, qty }) {
     setRandomPosts(newRandomPosts)
   }, [posts, qty])
 
+  if(!posts) return null
+
   return (
     <SwiperSliderHomeCover
       posts={randomPosts}

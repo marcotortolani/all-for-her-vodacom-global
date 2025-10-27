@@ -11,8 +11,10 @@ export default async function SliderLatestPosts({
 }) {
   const { posts: dataPosts } = await getPostsByCategoryId({ id })
 
+  if (!dataPosts || dataPosts.length === 0) return null
+
   const randomPosts = cleanDataPosts({
-    posts: dataPosts?.slice(0, qty),
+    posts: dataPosts?.slice(0, qty) || [],
     categorySlug,
   })
 

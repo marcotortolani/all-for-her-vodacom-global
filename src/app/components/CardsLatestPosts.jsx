@@ -14,9 +14,11 @@ export default async function CardsLatestPosts({ id, qty, categorySlug }) {
   const { posts: dataPosts } = await getPostsByCategoryId({ id })
 
   const cardPosts = cleanDataPosts({
-    posts: dataPosts?.slice(0, qty),
+    posts: dataPosts?.slice(0, qty) || [],
     categorySlug,
   })
+
+  if (!cardPosts || cardPosts.length === 0) return null
 
   return (
     <div className=" w-full h-full flex justify-center">

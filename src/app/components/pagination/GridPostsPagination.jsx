@@ -18,11 +18,13 @@ export default function GridPostsPagination({ category }) {
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(true)
 
+  console.log(posts)
+
   useEffect(() => {
     const getDataPosts = async () => {
       setLoading(true)
       try {
-        const data = await getPostsByCategoryId({
+        const { posts: data } = await getPostsByCategoryId({
           id: category.id,
           page: page,
           perPage: 12,
@@ -115,7 +117,7 @@ export default function GridPostsPagination({ category }) {
       )}
 
       {/* Empty State */}
-      {!loading && posts.length === 0 && (
+      {(!posts || (!loading && posts?.length === 0)) && (
         <div className="mt-8 text-center">
           <p className="text-gray-500">
             No se encontraron posts en esta categoría.

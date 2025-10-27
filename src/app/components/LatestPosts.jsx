@@ -18,7 +18,10 @@ export default async function LatestPosts({
   tagExclude = 14,
 }) {
   // const tagExclude = tagIDVideoPost;
-  const dataPosts = await getPostsByCategoryId({ id, tagExclude: tagExclude })
+  const { posts: dataPosts } = await getPostsByCategoryId({
+    id,
+    tagExclude: tagExclude,
+  })
 
   const latestPosts = cleanDataPosts({
     posts: getLatestPosts({ posts: dataPosts, qty: qty }),

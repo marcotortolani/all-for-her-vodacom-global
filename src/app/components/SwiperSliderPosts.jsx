@@ -23,7 +23,6 @@ SwiperCore.use([Pagination])
 export default function SwiperSliderPosts({
   posts,
   categorySlug,
-  slidesPerView,
   delayPerView,
   colorBullets,
   sizeBullets,
@@ -32,7 +31,7 @@ export default function SwiperSliderPosts({
   const [indexPag, setIndexPag] = useState(0)
   const sliderRef = useRef(0)
 
-  const qtyBullets = Object.keys(posts).length - slidesPerView + 1
+  const qtyBullets = Object.keys(posts).length - 1
 
   const pagination = {
     clickable: true,

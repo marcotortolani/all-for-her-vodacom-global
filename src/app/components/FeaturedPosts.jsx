@@ -32,7 +32,7 @@ export default async function FeaturedPosts({
   categorySlug,
   tagExclude,
 }) {
-  const dataPosts = await getPostsByCategoryId({ id, tagExclude })
+  const { posts: dataPosts } = await getPostsByCategoryId({ id, tagExclude })
 
   const featuredPosts = cleanDataPosts({
     posts: getRandomPosts({ posts: dataPosts, qty: qty }),

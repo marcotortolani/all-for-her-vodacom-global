@@ -12,6 +12,13 @@ import ImageMissing from './ImageMissing.jsx'
 export default function FavouriteCardPost() {
   const { favouritePosts } = useContext(StateContext)
 
+  if (favouritePosts === undefined || favouritePosts.length === 0)
+    return (
+      <div>
+        <p className="text-2xl font-bold text-primary">No tienes favoritos</p>
+      </div>
+    )
+
   return (
     <div className=" w-screen md:w-full h-full flex justify-center ">
       {favouritePosts?.length >= 1 ? (
