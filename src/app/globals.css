@@ -132,7 +132,7 @@ ol li {
 
 @media (min-width: 475px) {
   .swiper-pagination-bullets {
-    bottom: -1rem !important;
+    bottom: -2rem !important;
   }
 }
 
