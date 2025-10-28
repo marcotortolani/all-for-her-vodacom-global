@@ -13,6 +13,7 @@ const routes = [
   { title: CATEGORIES.fashion.name, href: `/${CATEGORIES.fashion.slug}` },
   { title: CATEGORIES.fitness.name, href: `/${CATEGORIES.fitness.slug}` },
   { title: CATEGORIES.advice.name, href: `/${CATEGORIES.advice.slug}` },
+  { title: 'Videos', href: '/videos' },
   { title: 'Favorites', href: '/favorites' },
 ]
 
