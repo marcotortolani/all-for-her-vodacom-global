@@ -82,12 +82,12 @@ export default function SliderSidebar() {
                 className=" relative w-full h-full flex justify-center items-center overflow-hidden hover:cursor-pointer rounded-lg"
                 href={`/${isVideo}/${post.slug}`}
               >
-                {post.images[0] ? (
+                {post?.featured_image || post.images[0] ? (
                   <Image
                     className=" w-auto object-cover "
                     fill={true}
                     sizes="(max-width: 250px)"
-                    src={post.images[0]}
+                    src={post?.featured_image[0] || post.images[0]}
                     alt={`Icono Categoría ${post.name}`}
                     loading="eager"
                   />
