@@ -102,7 +102,7 @@ ol li {
 }
 
 .swiper-pagination-bullet {
-  background: #ffffff;
+  background-color: transparent !important;
   width: 12px !important;
   height: 12px !important;
   margin: 10px 4px !important;
@@ -112,7 +112,6 @@ ol li {
 }
 
 .swiper-pagination-bullet-active {
-  background: transparent !important;
   width: 20px !important;
   border-radius: 1rem !important;
   border: 2px solid #ad2312 !important;
@@ -146,7 +145,6 @@ ol li {
     border-radius: 1rem !important;
   }
   .swiper-pagination-bullet-active {
-    background: transparent !important;
     width: 32px !important;
     border-radius: 1rem !important;
     border: 2px solid #ad2312 !important;

@@ -63,7 +63,7 @@ export default function SwiperSliderPosts({
             : 'editorial'
 
         return (
-          <SwiperSlide className={`relative pb-10 w-full  h-full`} key={post?.id}>
+          <SwiperSlide className={`relative pb-10 w-full h-full`} key={post?.id}>
             <div
               key={post?.id}
               className={` w-full aspect-[3/4] relative overflow-hidden flex flex-col items-center justify-center rounded-lg md:rounded-xl lg:rounded-2xl`}
