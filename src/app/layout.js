@@ -4,6 +4,7 @@ import Providers from '@/providers/Providers'
 import './globals.css'
 
 import dictionary from '../dictionary/lang.json'
+import ScrollToTop from './components/ScrollToTop'
 
 export const openSans = Open_Sans({
   subsets: ['latin'],
@@ -54,8 +55,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang={dictionary['lang']}>
       <body
-        className={`${abrilFatface.variable} ${poppins.variable} relative w-screen overflow-scroll overflow-x-hidden scroll-smooth flex flex-col items-center bg-black font-poppins`}
+        className={`${abrilFatface.variable} ${poppins.variable} relative w-screen overflow-scroll overflow-x-hidden scroll-smooth top-0 flex flex-col items-center bg-black font-poppins`}
       >
+        <ScrollToTop />
         <Header />
         <Providers>{children}</Providers>
         <DownbarMobile />
