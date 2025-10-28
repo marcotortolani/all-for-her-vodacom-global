@@ -28,7 +28,7 @@ export default async function VideoPost({ slug, categorySlug }) {
         <ButtonLikeFav post={post[0]} />
       </div>
       <h3
-        className={` w-full font-abrilFatface font-medium text-left text-4xl md:text-5xl lg:text-6xl  text-black line-clamp-2 `}
+        className={` w-full pr-4 font-abrilFatface font-medium text-left text-4xl md:text-5xl lg:text-6xl text-black `}
       >
         {parse(post[0]?.title || '')}
       </h3>

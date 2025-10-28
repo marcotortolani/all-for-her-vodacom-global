@@ -47,6 +47,18 @@ const buttonElements = [
   },
   {
     id: 7,
+    name: 'Videos',
+    iconSrc: '/images/videos-white-icon.webp',
+    href: '/videos',
+  },
+  {
+    id: 8,
+    name: 'Favorites',
+    iconSrc: '/images/favorites-white-icon.webp',
+    href: '/favorites',
+  },
+  {
+    id: 9,
     name: 'Home',
     iconSrc: '/images/home-white-icon.webp',
     href: '/',
@@ -138,7 +150,7 @@ export default function SidebarMenu({ isVisible, isOpen, onOpen, onClose }) {
                     isActive
                       ? ' bg-black/30 hover:bg-opacity-70 '
                       : ' bg-primary-light hover:bg-opacity-30 '
-                  } w-full h-fit min-h-[40px] md:min-h-[10px] flex items-center  rounded-full`}
+                  } w-full h-fit min-h-[40px] flex items-center  rounded-full`}
                   key={button.id}
                 >
                   <Link

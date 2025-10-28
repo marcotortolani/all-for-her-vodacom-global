@@ -59,10 +59,10 @@ export default function Header() {
   return (
     <header
       className={` ${
-        isNavbarVisible ? 'top-5 ' : ' -top-36  '
-      } transition-all z-20 fixed lg:top-0 lg:absolute w-full h-fit flex justify-center`}
+        isNavbarVisible ? 'top-5 lg:top-0' : ' -top-36  '
+      } transition-all z-20 fixed  w-full h-fit flex justify-center`}
     >
-      <div className=" absolute top-4 lg:top-0 w-screen h-20 hidden lg:flex items-center justify-evenly bg-black/80 shadow-md shadow-gray-800  rounded-b-2xl">
+      <div className=" absolute top-4 lg:top-0 w-screen h-20 hidden lg:flex items-center justify-evenly bg-black/80 shadow-md shadow-gray-800 backdrop-blur-xl border-b border-gray-500 rounded-b-2xl">
         <div className=" w-1/6 h-full flex items-center justify-center  cursor-default pointer-events-none">
           <Link
             href="/"
