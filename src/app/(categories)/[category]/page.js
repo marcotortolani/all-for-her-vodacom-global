@@ -14,7 +14,7 @@ const staticCover = {
   },
   fitness: {
     id: 2,
-    title: 'Fitness 1',
+    title: 'Fitness',
     imgSrc: '/images/fitness-banner.webp',
     href: '/fitness',
   },
@@ -53,7 +53,6 @@ export default function Page({ params }) {
       <BannerCategory elem={staticCover[category]} />
 
       <GridPostsPagination category={cat} />
-
       <div className="w-full h-20"></div>
     </main>
   )

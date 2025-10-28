@@ -19,7 +19,7 @@ export default function ButtonSeePost({
           : size === 'md'
           ? ' text-lg shadow-md px-8 py-0 '
           : ' shadow-none px-1 py-0'
-      } ${bgColor} shadow-black rounded-full hover:cursor-pointer`}
+      } ${bgColor} shadow-black rounded-full hover:cursor-pointer hover:scale-105 hover:opacity-80 transition-all duration-300 ease-in-out`}
       href={href}
     >
       {text}

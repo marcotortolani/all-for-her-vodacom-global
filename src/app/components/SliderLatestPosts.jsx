@@ -22,11 +22,7 @@ export default async function SliderLatestPosts({
     <SwiperSliderPosts
       posts={randomPosts}
       categorySlug={categorySlug}
-      slidesPerView={1}
-      delayPerView={3500}
-      spaceBetweenSlides={30}
-      colorBullets={'primary'}
-      sizeBullets={'default'}
+      delayPerView={5500}
       buttonBgColor={buttonBgColor}
     />
   )

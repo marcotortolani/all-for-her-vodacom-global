@@ -82,9 +82,11 @@ export default function SearchBar() {
         <div className=" -z-10 absolute top-10 w-[90vw] max-w-screen-md bg-primary-extralight/80 backdrop-blur-sm border-primary border-solid border-2 rounded-xl">
           <ul className=" w-full h-fit p-2 py-1">
             {results?.map((result) => {
-              const isVideo = result?.tags?.includes(TAGS.video.id)
-                ? 'videos'
-                : 'editorial'
+              const isVideo =
+                result?.tags?.includes(TAGS.video.id) ||
+                result?.video?.url?.length
+                  ? 'videos'
+                  : 'editorial'
 
               return (
                 <li

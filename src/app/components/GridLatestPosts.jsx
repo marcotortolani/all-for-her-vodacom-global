@@ -35,7 +35,10 @@ export default async function GridLatestPosts({ id, categorySlug }) {
 }
 
 const ItemLatestPost = ({ post, categorySlug }) => {
-  const isVideo = post?.tags?.includes(TAGS.video.id) ? 'videos' : 'editorial'
+  const isVideo =
+    post?.tags?.includes(TAGS.video.id) || post?.video?.url?.length
+      ? 'videos'
+      : 'editorial'
 
   return (
     <li
@@ -43,21 +46,21 @@ const ItemLatestPost = ({ post, categorySlug }) => {
     >
       <Link
         href={`/${categorySlug}/${isVideo}/${post?.slug}`}
-        className=" w-full h-full rounded-[inherit]"
+        className="relative w-full h-full rounded-[inherit] hover:scale-105 transition-all duration-300 ease-in-out"
       >
         <div className=" relative z-0 w-full h-full rounded-[inherit]">
-          {post?.images.length > 0 ? (
+          {post?.featured_image || post?.images.length > 0 ? (
             <Image
-              className={` relative w-full h-full max-h-[200px] md:max-h-[250px] lg:max-h-[300px] object-center object-cover rounded-[inherit] cursor-default pointer-events-none select-none`}
+              className={` relative w-full h-full object-center object-cover rounded-[inherit] cursor-default pointer-events-none select-none`}
               width={220}
               height={220}
-              src={post?.images[0]}
+              src={post?.featured_image[0] || post?.images[0]}
               alt={`Image ${post?.title}`}
             />
           ) : (
             <ImageMissing />
           )}
-          <div className=" z-10 w-full h-full lg:h-[90%] absolute top-0 bg-black opacity-30 rounded-[inherit]"></div>
+          <div className=" z-10 w-full h-full absolute top-0 bg-black opacity-30 rounded-[inherit]"></div>
         </div>
         <div className=" z-20 w-full h-full p-2 flex items-end absolute bottom-0 pointer-events-none select-none">
           <h3

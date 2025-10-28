@@ -69,9 +69,10 @@ export default function SliderSidebar() {
         className="mySwiper w-full h-full px-0 overflow-hidden overflow-x-scroll "
       >
         {posts?.map((post) => {
-          const isVideo = post?.tags?.includes(TAGS.video.id)
-            ? 'videos'
-            : 'editorial'
+          const isVideo =
+            post?.tags?.includes(TAGS.video.id) || post?.video?.url?.length
+              ? 'videos'
+              : 'editorial'
           return (
             <SwiperSlide
               className=" relative w-full h-full cursor-pointer "

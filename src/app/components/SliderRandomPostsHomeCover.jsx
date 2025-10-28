@@ -40,6 +40,8 @@ function cleanDataPosts({ posts }) {
       excerpt: pExcerpt[0],
       tags: post.tags,
       image: imgArray[0],
+      featured_image: post?.featured_image,
+      video: post.video,
     })
   }
   return data
@@ -56,7 +58,7 @@ export default function SliderRandomPostsHomeCover({ posts, qty }) {
     setRandomPosts(newRandomPosts)
   }, [posts, qty])
 
-  if(!posts) return null
+  if (!posts) return null
 
   return (
     <SwiperSliderHomeCover

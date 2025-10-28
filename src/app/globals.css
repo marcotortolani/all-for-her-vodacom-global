@@ -60,15 +60,11 @@ input[type='text'] .search-bar::before {
   content: '';
   z-index: 100000;
   position: absolute;
-  /* top: 50%;
-  left: 1.2rem;
-  transform: translateY(-50%); */
   width: 14px; /* Ajusta el ancho según tus preferencias */
   height: 14px;
   position: absolute;
   top: 0;
-  /* color: black; */
-  background: url('../../public/old/icons/IconoBuscarBlack.webp');
+  background: url('../../public/images/IconoBuscarBlack.webp');
   background-color: blue;
   background-size: cover;
 }
@@ -77,10 +73,6 @@ input[type='text'] .search-bar::before {
   animation-name: animationImageBackground;
   animation-timing-function: ease-in;
   animation-iteration-count: infinite;
-  /* animation-direction: alternate; */
-  /* animation-duration: 5000ms; */
-  /* animation-fill-mode: both; */
-  /* animation-duration: 5000ms; */
 }
 
 .post-parsed {
@@ -107,6 +99,57 @@ ol li {
   list-style: none;
   font-family: 'textMedium', sans-serif;
   font-weight: 500;
+}
+
+.swiper-pagination-bullet {
+  background: #ffffff;
+  width: 12px !important;
+  height: 12px !important;
+  margin: 10px 4px !important;
+  opacity: 1 !important;
+  border: 2px solid #ad2312 !important;
+  border-radius: 1rem !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: transparent !important;
+  width: 20px !important;
+  border-radius: 1rem !important;
+  border: 2px solid #ad2312 !important;
+  background-color: #ad2312 !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+}
+
+.swiper-pagination-bullets {
+  /* top: 1rem; */
+  position: relative !important;
+  bottom: 0rem !important;
+}
+
+@media (min-width: 475px) {
+  .swiper-pagination-bullets {
+    bottom: 0rem !important;
+  }
+}
+
+@media (min-width: 975px) {
+  .swiper-pagination-bullet {
+    width: 16px !important;
+    height: 16px !important;
+    margin: 20px 5px !important;
+    border: 3px solid #ad2312 !important;
+    border-radius: 1rem !important;
+  }
+  .swiper-pagination-bullet-active {
+    background: transparent !important;
+    width: 32px !important;
+    border-radius: 1rem !important;
+    border: 2px solid #ad2312 !important;
+  }
 }
 
 @media (min-width: 550px) {

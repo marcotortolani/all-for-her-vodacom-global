@@ -40,12 +40,13 @@ export default function SwiperSliderHomeCover({
   }
 
   return (
-    <div className=" z-30 relative top-0 w-screen h-full lg:h-screen lg:max-h-[700px]  pb-10 lg:pb-0 flex flex-col items-center">
+    <div className=" z-30 relative top-0 w-screen h-full pb-10 lg:pb-28 flex flex-col items-center">
       <Swiper
         ref={sliderRef}
         slidesPerView={slidesPerView}
         centeredSlides={false}
         spaceBetween={spaceBetweenSlides}
+        speed={3000}
         autoplay={{
           delay: delayPerView,
           disableOnInteraction: false,
@@ -59,9 +60,10 @@ export default function SwiperSliderHomeCover({
         className="mySwiper w-full h-full px-0 overflow-hidden flex  items-center gap-0 "
       >
         {posts?.map((post, index) => {
-          const isVideo = post?.tags?.includes(TAGS.video.id)
-            ? 'videos'
-            : 'editorial'
+          const isVideo =
+            post?.tags?.includes(TAGS.video.id) || post?.video?.url?.length
+              ? 'videos'
+              : 'editorial'
 
           return (
             <SwiperSlide
@@ -69,12 +71,12 @@ export default function SwiperSliderHomeCover({
               key={post?.id}
             >
               <div className=" -z-10 relative top-0 w-full h-[80vh] lg:h-full  min-h-[400px] overflow-hidden rounded-none md:rounded-b-[3rem] lg:rounded-b-[4rem] ">
-                {post?.image ? (
+                {post?.featured_image || post?.image ? (
                   <Image
                     className={`${
                       indexPag === index + 1 ? 'animation-image-bg' : ''
                     }  relative w-full h-auto lg:w-auto lg:h-full object-cover rounded-[inherit]`}
-                    src={post?.image}
+                    src={post?.featured_image[0] || post?.image}
                     fill={true}
                     priority
                     sizes="(max-width: 100vw)"
@@ -116,7 +118,7 @@ export default function SwiperSliderHomeCover({
         })}
       </Swiper>
 
-      <div className=" z-50 absolute bottom-6 hidden lg:flex">
+      <div className=" z-50 absolute bottom-36 hidden xl:flex">
         <PaginationBullets
           color={colorBullets}
           size={sizeBullets}

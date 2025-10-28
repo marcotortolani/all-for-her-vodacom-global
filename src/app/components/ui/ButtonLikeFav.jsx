@@ -40,7 +40,7 @@ export default function ButtonLikeFav({
     <button
       id={buttonID}
       onClick={handleClick}
-      className=" w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 "
+      className=" w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 hover:scale-110 transition-all duration-200 ease-in-out "
     >
       <Heart
         className={`${

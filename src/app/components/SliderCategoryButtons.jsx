@@ -55,8 +55,7 @@ const categButtons = [
 const COLOR_BULLETS = 'white'
 const SIZE_BULLETS = 'default'
 const SLIDES_PER_VIEW = 3
-const DELAY_PER_VIEW = 2500
-const SPACE_BETWEEN_SLIDES = 0
+const DELAY_PER_VIEW = 4500
 
 export default function SliderCategoryButtons() {
   const [indexPag, setIndexPag] = useState(0)
@@ -74,39 +73,52 @@ export default function SliderCategoryButtons() {
   }
 
   return (
-    <div className=" z-30 absolute -bottom-10  w-full h-fit min-h-[120px]  flex flex-col items-center justify-end overflow-hidden  lg:hidden">
+    <div className=" z-30 absolute bottom-0 -translate-y-4 md:translate-y-0 lg:translate-y-16 xl:translate-y-10 w-full max-w-screen-lg h-fit min-h-[120px]  flex flex-col items-center justify-end overflow-hidden ">
       <Swiper
         ref={sliderRef}
         slidesPerView={SLIDES_PER_VIEW}
         centeredSlides={false}
-        spaceBetween={SPACE_BETWEEN_SLIDES}
         autoplay={{
           delay: DELAY_PER_VIEW,
           disableOnInteraction: false,
         }}
-        // pagination={{
-        //   clickable: true,
-        // }}
+        breakpoints={{
+          280: {
+            spaceBetween: 10,
+          },
+          // when window width is >= 640px
+          640: {
+            spaceBetween: 20,
+          },
+          // when window width is >= 768px
+          768: {
+            spaceBetween: 40,
+          },
+          // when window width is >= 1024px
+          1024: {
+            spaceBetween: 100,
+          },
+        }}
         pagination={pagination}
         modules={[Autoplay, Navigation]}
         navigation={false}
-        className="mySwiper w-screen h-5/5 px-0 overflow-hidden flex justify-between items-center gap-6 "
+        className="mySwiper w-full h-[80px] sm:[90px] md:h-[100px] lg:h-[120px] overflow-hidden "
       >
         {categButtons.map((el) => (
           <SwiperSlide
-            className=" relative w-full h-fit  cursor-pointer"
+            className=" relative w-full h-full flex items-center justify-center  "
             key={el.id}
           >
             <Link
-              className=" w-full h-fit flex justify-center items-center hover:cursor-pointer "
+              className=" h-full aspect-square mx-auto flex justify-center items-center hover:cursor-pointer"
               href={el.href}
             >
               <Image
-                className=" w-5/6 min-w-[80px] max-w-[100px] sm:max-w-[120px] h-auto"
+                className=" w-full h-full "
                 width={90}
                 height={90}
                 src={el.imgSrc}
-                alt={`Icono Categoría ${el.title}`}
+                alt={`Category Icon ${el.title}`}
                 loading="eager"
               />
               <h4

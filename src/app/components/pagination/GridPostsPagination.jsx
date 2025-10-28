@@ -75,7 +75,7 @@ export default function GridPostsPagination({ category }) {
         <div className=" grid w-full grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-4 xl:gap-6 ">
           {posts.map((post) => {
             const isVideo =
-              post?.tags?.includes(TAGS.video.id) || post.video.url.length
+              post?.tags?.includes(TAGS.video.id) || post?.video?.url?.length
                 ? 'videos'
                 : 'editorial'
 
