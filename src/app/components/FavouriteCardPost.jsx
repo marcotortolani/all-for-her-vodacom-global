@@ -11,6 +11,7 @@ import ImageMissing from './ImageMissing.jsx'
 import { TAGS } from '@/utils/constants.js'
 import PlayCircle from './ui/PlayCircle.jsx'
 import ButtonSeePost from './ui/ButtonSeePost.jsx'
+import ButtonLikeFav from './ui/ButtonLikeFav.jsx'
 
 export default function FavouriteCardPost() {
   const { favouritePosts } = useContext(StateContext)
@@ -88,6 +89,9 @@ export default function FavouriteCardPost() {
               key={`${post?.id}-${index}`}
               className="relative flex aspect-[3/4] w-full flex-col items-center justify-center overflow-hidden rounded-lg md:rounded-xl lg:rounded-2xl"
             >
+              <div className="z-20 absolute top-2 right-2 w-6 h-6 lg:w-8 lg:h-8 p-1 flex items-center justify-center rounded-full ">
+                <ButtonLikeFav post={post} />
+              </div>
               <Link
                 href={`/${isVideo}/${post?.slug}`}
                 className="relative z-0 h-full w-full rounded-[inherit] transition-all duration-500 ease-in-out hover:scale-110"
