@@ -126,7 +126,7 @@ ol li {
 .swiper-pagination-bullets {
   /* top: 1rem; */
   position: absolute !important;
-  bottom: -1rem !important;
+  bottom: -2rem !important;
   transform: translateY(-20px);
 }
 
