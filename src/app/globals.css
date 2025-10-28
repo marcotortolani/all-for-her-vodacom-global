@@ -126,13 +126,14 @@ ol li {
 
 .swiper-pagination-bullets {
   /* top: 1rem; */
-  position: relative !important;
-  bottom: 0rem !important;
+  position: absolute !important;
+  bottom: -1rem !important;
+  transform: translateY(-20px);
 }
 
 @media (min-width: 475px) {
   .swiper-pagination-bullets {
-    bottom: 0rem !important;
+    bottom: -1rem !important;
   }
 }
 
