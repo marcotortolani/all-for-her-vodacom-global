@@ -4,12 +4,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { configSiteStatic } from '../../../../configSiteStatic.js'
 
-const { iconoAtras, iconoBuscar, iconoHome, iconoFavorito, iconoVideo2 } =
-  configSiteStatic.icons
-
-// import { ChevronLeft, Search, Home, Heart, PlayCircle } from 'lucide-react'
+import iconoAtras from '../../../../public/images/IconoAtras.webp'
+import iconoBuscar from '../../../../public/images/IconoBuscar.webp'
+import iconoHome from '../../../../public/images/IconoHome.webp'
+import iconoFavorito from '../../../../public/images/IconoFavorito.webp'
+import iconoVideo2 from '../../../../public/images/videos-white-icon.webp'
 
 const navButtons = {
   back: {
