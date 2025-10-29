@@ -8,9 +8,8 @@ export default function page({ params }) {
 
   const getRandomCategory = () => {
     // get random category without the current category
-    const categories = Object.values(CATEGORIES).filter(
-      (c) => c.slug !== category
-    )
+    const categories = Object.values(CATEGORIES)
+
     const randomIndex = Math.floor(Math.random() * categories.length)
     return categories[randomIndex]
   }

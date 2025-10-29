@@ -16,7 +16,14 @@ export default function Breadcrumb({ homeElement, separator }) {
     pathNames.includes('video') ||
     pathNames.includes('videos')
   ) {
-    pathNames.pop()
+    const latestPath = pathNames[pathNames.length - 1]
+    if (
+      latestPath !== 'editorial' &&
+      latestPath !== 'video' &&
+      latestPath !== 'videos'
+    ) {
+      pathNames.pop()
+    }
   }
 
   return (
