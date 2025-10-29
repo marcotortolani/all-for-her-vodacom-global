@@ -2,6 +2,8 @@
 import React from 'react'
 import Link from 'next/link'
 
+import dictionary from '@/dictionary/lang.json'
+
 export default function error({ error }) {
   console.log('ERROR: ', error)
 
@@ -14,14 +16,18 @@ export default function error({ error }) {
               'font-openSans text-4xl uppercase font-semibold text-white'
             }
           >
-            Atencion!
+            {dictionary['Attention!']}
           </span>
           <h2
             className={
               ' px-10 font-poppins font-medium text-center text-xl text-white'
             }
           >
-            La categoría o el post al que queres acceder no existe
+            {
+              dictionary[
+                'The category or post you want to access does not exist'
+              ]
+            }
           </h2>
         </div>
         <Link
@@ -31,7 +37,7 @@ export default function error({ error }) {
           href={'/'}
           target="_self"
         >
-          Volver al inicio
+          {dictionary['Back to home']}
         </Link>
       </div>
 

@@ -12,6 +12,8 @@ import PostCardSkeleton from '@/app/components/pagination/PostCardSkeleton'
 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
+import dictionary from '@/dictionary/lang.json'
+
 export default function GridVideosPagination() {
   const [posts, setPosts] = useState([])
   const [totalPages, setTotalPages] = useState(0)
@@ -114,9 +116,7 @@ export default function GridVideosPagination() {
       {/* Empty State */}
       {(!posts || (!loading && posts?.length === 0)) && (
         <div className="mt-8 text-center">
-          <p className="text-gray-500">
-            No se encontraron posts en esta categoría.
-          </p>
+          <p className="text-gray-500">{dictionary['No videos found']}</p>
         </div>
       )}
 
@@ -191,7 +191,7 @@ const PaginationControl = ({
       {/* Mobile: Page Numbers Text */}
       <div className="flex gap-1 lg:hidden">
         <p className="text-sm text-gray-500">
-          Página {page} / {totalPages}
+          {dictionary['Page']} {page} / {totalPages}
         </p>
       </div>
 
@@ -237,39 +237,3 @@ const PaginationControl = ({
     </div>
   )
 }
-
-// const PaginationControl = ({
-//   totalPages,
-//   page,
-//   handleNextPage,
-//   handlePrevPage,
-// }) => {
-//   return (
-//     <div className="mt-12 w-full max-w-screen-md mx-auto h-full flex items-center justify-between gap-2">
-//       {/* Previous Button */}
-//       <button
-//         onClick={handlePrevPage}
-//         disabled={page === 1}
-//         className="rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-50"
-//       >
-//         <ChevronLeft />
-//       </button>
-
-//       {/* Page Numbers */}
-//       <div className="flex gap-1">
-//         <p className="text-sm text-gray-500">
-//           Página {page} / {totalPages}
-//         </p>
-//       </div>
-
-//       {/* Next Button */}
-//       <button
-//         onClick={handleNextPage}
-//         disabled={page === totalPages}
-//         className="rounded-lg bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-50"
-//       >
-//         <ChevronRight />
-//       </button>
-//     </div>
-//   )
-// }

@@ -1,10 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-
 import { URL_LANDING_SUBS } from '@/config/config'
-
 import logoHorizontal from '../../../../public/images/brand-logo-horizontal.webp'
+
+import dictionary from '@/dictionary/lang.json'
 
 export default function Footer() {
   return (
@@ -27,24 +27,24 @@ export default function Footer() {
       </div>
       <div className=" h-1/3 flex flex-col items-center gap-0 pointer-events-none cursor-defaul select-none">
         <p className=" uppercase text-xs md:text-sm lg:text-base leading-4 text-white">
-          Epa Mujer es un sitio de Media Moob S.A.
+          {dictionary['site']} {dictionary['is a Media Moob S.A. site']}
         </p>
         <p className=" uppercase text-xs md:text-sm lg:text-base leading-4 text-white">
-          Todos los derechos reservados.
+          {dictionary['All rights reserved']}
         </p>
       </div>
       <Link
-        href={'/terms'}
+        href={`/terms/${dictionary['lang']}`}
         className=" h-1/4 uppercase text-xs md:text-sm lg:text-base text-primaryDark hover:text-primary underline"
       >
-        Términos y Condiciones
+        {dictionary['Terms and Conditions']}
       </Link>
       <Link
         href={URL_LANDING_SUBS}
         target="_blank"
         className=" h-1/4 uppercase text-xs md:text-sm lg:text-base text-primaryDark hover:text-primary underline"
       >
-        Suscripción
+        {dictionary['Subscribe']}
       </Link>
     </footer>
   )

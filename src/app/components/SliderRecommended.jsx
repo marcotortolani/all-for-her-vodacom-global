@@ -26,9 +26,6 @@ export default function SliderRecommended({ posts, categorySlug }) {
         pauseOnMouseEnter: true,
         disableOnInteraction: false,
       }}
-      // pagination={{
-      //   clickable: true,
-      // }}
       breakpoints={{
         280: {
           slidesPerView: 2,

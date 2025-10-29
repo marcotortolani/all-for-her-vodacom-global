@@ -1,7 +1,8 @@
 import React from 'react'
+import dictionary from '@/dictionary/lang.json'
 
 export default function ImageMissing({
-  text = 'Imágen faltante',
+  text = dictionary['Image missing'],
   colorBg = 'bg-accent',
 }) {
   return (

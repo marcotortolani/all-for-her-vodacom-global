@@ -82,7 +82,7 @@ export default async function FeaturedPosts({
                       width={100}
                       height={100}
                       src={iconVideo}
-                      alt="Imagen"
+                      alt="Image"
                     />
                   </div>
                 </Link>
@@ -94,7 +94,6 @@ export default async function FeaturedPosts({
               </h3>
               {type !== 'video' && (
                 <ButtonSeePost
-                  text="Ver"
                   href={`/${post?.category}/${post?.id}`}
                   size="xs"
                 />

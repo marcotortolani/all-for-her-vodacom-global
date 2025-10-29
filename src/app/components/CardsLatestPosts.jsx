@@ -64,7 +64,6 @@ export default async function CardsLatestPosts({ id, qty, categorySlug }) {
                 <div className=" z-20 w-full px-4 py-2 lg:px-6 lg:py-2  flex items-center justify-between bg-primary-extralight pointer-events-auto rounded-b-[inherit] ">
                   <ButtonSeePost
                     id={post?.id}
-                    text="Ver"
                     href={`/${categorySlug}/${isVideo}/${post?.slug}`}
                     size="xs"
                     bgColor="bg-black"

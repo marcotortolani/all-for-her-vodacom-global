@@ -91,7 +91,6 @@ export default function SliderCover({
               <div className=" z-10 absolute top-0 w-full h-full bg-black opacity-20 line-clamp-1 content-normal rounded-[inherit]" />
               <div className=" z-20 w-full h-full py-[5%] flex flex-col items-center justify-end gap-8 absolute top-0">
                 <ButtonSeePost
-                  text="Ver"
                   href={'/' + elem.category + `/${elem.id}`}
                   size="xs"
                   icon={iconEye}

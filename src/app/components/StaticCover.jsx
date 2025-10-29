@@ -3,15 +3,17 @@ import Image from 'next/image'
 import ButtonSeePost from './ui/ButtonSeePost'
 import ImageMissing from './ImageMissing'
 
+import dictionary from '@/dictionary/lang.json'
+
 export default function StaticCover({ elem, buttonBgColor }) {
   return (
     <div
-      className={` w-full  h-[30vh] min-h-[150px] max-h-[200px] sm:max-h-[250px] lg:min-h-[300px] relative flex flex-col items-center justify-center rounded-lg md:rounded-xl `}
+      className={` w-full h-[30vh] min-h-[150px] max-h-[200px] sm:max-h-[250px] lg:min-h-[300px] relative flex flex-col items-center justify-center rounded-lg md:rounded-xl `}
     >
       <div className=" relative w-full h-full rounded-[inherit]">
         {elem.imgSrc ? (
           <Image
-            className={`  w-full h-auto  object-cover rounded-[inherit]  `}
+            className={`w-full h-auto  object-cover rounded-[inherit]  `}
             fill
             src={elem.imgSrc}
             alt={`Image Static Cover ${elem.title}`}
@@ -29,7 +31,7 @@ export default function StaticCover({ elem, buttonBgColor }) {
           {elem.title}
         </h3>
         <ButtonSeePost
-          text="Ver más"
+          text={dictionary['See more']}
           href={elem.href}
           size="md"
           bgColor={buttonBgColor}

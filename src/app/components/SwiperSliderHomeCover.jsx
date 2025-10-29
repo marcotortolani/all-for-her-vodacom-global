@@ -15,6 +15,8 @@ import PaginationBullets from './ui/PaginationBullets'
 import ImageMissing from './ImageMissing'
 import { TAGS } from '@/utils/constants'
 
+import dictionary from '@/dictionary/lang.json'
+
 SwiperCore.use([Pagination])
 
 export default function SwiperSliderHomeCover({
@@ -108,7 +110,7 @@ export default function SwiperSliderHomeCover({
                 </div>
 
                 <ButtonSeePost
-                  text="Ver más"
+                  text={dictionary['See more']}
                   href={`/${isVideo}/${post?.slug}`}
                   size="md"
                 />

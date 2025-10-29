@@ -61,7 +61,7 @@ export default function SubcategoriesItems({ subcatElem }) {
               </h3>
             </div>
             <div className=" z-20 absolute bottom-0 w-full p-1 md:p-2 flex items-center justify-center bgpostButton rounded-[inherit]">
-              <ButtonSeePost text="Ver" href={elem.href} size="xs" />
+              <ButtonSeePost href={elem.href} size="xs" />
             </div>
           </li>
         ))}

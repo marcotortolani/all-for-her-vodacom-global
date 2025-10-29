@@ -2,6 +2,8 @@
 import React from 'react'
 import Link from 'next/link'
 
+import dictionary from '@/dictionary/lang.json'
+
 export default function error({ error }) {
   return (
     <main className=" z-0 mt-36 w-full   h-full min-h-screen px-4 flex flex-col items-center justify-between ">
@@ -12,14 +14,14 @@ export default function error({ error }) {
               ' font-openSans text-4xl uppercase font-semibold text-white'
             }
           >
-            Ups!
+            {dictionary['Oops!']}
           </span>
           <h2
             className={
               ' px-10 font-poppins font-medium text-center text-xl text-white'
             }
           >
-            Estamos teniendo problemas para cargar el contenido
+            {dictionary["We're having trouble loading the content"]}
           </h2>
           <span className=" absolute bottom-2 font-mono text-sm text-red-900">
             {error.message}
@@ -30,7 +32,7 @@ export default function error({ error }) {
           href={'/'}
           target="_self"
         >
-          Volver al inicio
+          {dictionary['Back to home']}
         </Link>
       </div>
 

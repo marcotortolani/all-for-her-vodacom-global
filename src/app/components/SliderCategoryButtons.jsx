@@ -121,13 +121,15 @@ export default function SliderCategoryButtons() {
                 alt={`Category Icon ${el.title}`}
                 loading="eager"
               />
-              <h4
-                className={
-                  ' absolute w-2/3 uppercase font-poppins italic font-medium text-center text-[0.8rem] sm:text-sm text-white text-shadow-sm shadow-black '
-                }
-              >
-                {el.title}
-              </h4>
+              {el.title && (
+                <h4
+                  className={
+                    ' absolute w-2/3 uppercase font-poppins italic font-medium text-center text-[0.8rem] sm:text-sm text-white text-shadow-sm shadow-black '
+                  }
+                >
+                  {el.title}
+                </h4>
+              )}
             </Link>
           </SwiperSlide>
         ))}

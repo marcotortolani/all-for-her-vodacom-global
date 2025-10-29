@@ -4,6 +4,8 @@ import NextCrypto from 'next-crypto'
 
 import Breadcrumb from '../components/ui/Breadcrumb'
 
+import dictionary from '@/dictionary/lang.json'
+
 const cryptoUser = new NextCrypto('user enabled')
 
 export default async function layout({ children }) {
@@ -23,7 +25,7 @@ export default async function layout({ children }) {
   return (
     <div className=" z-0 w-full max-w-screen-xl mt-32 px-4 h-full relative flex flex-col justify-center bg-black ">
       <div className=" z-50 w-full px-2 py-2 flex  justify-center ">
-        <Breadcrumb homeElement={'home'} />
+        <Breadcrumb homeElement={dictionary['home']} />
       </div>
       <ChildrenAuth />
     </div>

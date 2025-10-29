@@ -38,8 +38,6 @@ export default async function PagePost({ slug, categorySlug }) {
           <div className=" w-full h-full rounded-[inherit]">
             <Image
               className={`  w-full h-auto  object-cover rounded-[inherit]  `}
-              // width={220}
-              // height={160}
               fill={true}
               src={
                 post?.featured_image?.[0] ||
@@ -51,7 +49,7 @@ export default async function PagePost({ slug, categorySlug }) {
             />
           </div>
         ) : (
-          <ImageMissing text={''} colorBg={'bg-primary'} />
+          <ImageMissing colorBg={'bg-primary'} />
         )}
 
         <div className=" z-10 absolute top-0 w-full h-full bg-black opacity-30 line-clamp-1 content-normal rounded-[inherit]" />

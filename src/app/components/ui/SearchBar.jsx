@@ -4,12 +4,11 @@ import Image from 'next/image'
 import { useRouter, usePathname } from 'next/navigation'
 import parse from 'html-react-parser'
 import { useState, useEffect } from 'react'
-
 import { searchData } from '@/utils/api'
-
-import { configSiteStatic } from '../../../../configSiteStatic'
-const { iconoBuscarBlack } = configSiteStatic.icons
 import { Loader2 } from 'lucide-react'
+import iconoBuscarBlack from '../../../../public/images/IconoBuscarBlack.webp'
+
+import dictionary from '@/dictionary/lang.json'
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState('')
@@ -56,7 +55,7 @@ export default function SearchBar() {
           type="text"
           name="search"
           id="search"
-          placeholder="Buscar..."
+          placeholder={`${dictionary['Search']}...`}
           value={inputValue}
           onChange={(e) => handleChange(e)}
         />
@@ -107,13 +106,4 @@ export default function SearchBar() {
       )}
     </div>
   )
-}
-
-{
-  /* <search role="search">
-<form action="/search">
-  <input type="search" name="" id="" />
-  <input type="submit" value="Search" />
-</form>
-</search> */
 }

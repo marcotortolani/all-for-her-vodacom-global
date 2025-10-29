@@ -13,6 +13,8 @@ import PlayCircle from './ui/PlayCircle.jsx'
 import ButtonSeePost from './ui/ButtonSeePost.jsx'
 import ButtonLikeFav from './ui/ButtonLikeFav.jsx'
 
+import dictionary from '@/dictionary/lang.json'
+
 export default function FavouriteCardPost() {
   const { favouritePosts } = useContext(StateContext)
   const [page, setPage] = useState(1)
@@ -69,7 +71,9 @@ export default function FavouriteCardPost() {
   if (favouritePosts === undefined || favouritePosts.length === 0) {
     return (
       <div className="flex h-full w-full items-center justify-center py-12">
-        <p className="text-2xl font-bold text-primary">No tienes favoritos</p>
+        <p className="text-2xl font-bold text-primary">
+          {dictionary['No favorites added']}
+        </p>
       </div>
     )
   }
@@ -99,8 +103,7 @@ export default function FavouriteCardPost() {
                 {post?.featured_image || post?.images?.length > 0 ? (
                   <Image
                     className="pointer-events-none relative h-full w-full cursor-default select-none rounded-[inherit] object-cover object-center"
-                    width={220}
-                    height={220}
+                    fill
                     src={post?.featured_image?.[0] || post?.images?.[0]}
                     alt={`Image ${post?.title}`}
                   />
@@ -118,7 +121,6 @@ export default function FavouriteCardPost() {
                 </h3>
                 <ButtonSeePost
                   id={post?.id}
-                  text="Ver"
                   href={`/${isVideo}/${post?.slug}`}
                   size="sm"
                   bgColor={'bg-primary'}
@@ -200,7 +202,7 @@ const PaginationControl = ({
       {/* Mobile: Page Numbers Text */}
       <div className="flex gap-1 lg:hidden">
         <p className="text-sm text-gray-500">
-          Página {page} / {totalPages}
+          {dictionary['Page']} {page} / {totalPages}
         </p>
       </div>
 

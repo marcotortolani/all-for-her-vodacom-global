@@ -1,9 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import dictionary from '@/dictionary/lang.json'
 
 export default function ButtonSeePost({
-  text,
+  text = dictionary['See'],
   href,
   size,
   icon,

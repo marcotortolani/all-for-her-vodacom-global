@@ -5,6 +5,8 @@ import { getPostsByCategoryId } from '@/utils/api'
 import { cleanDataPosts } from '@/utils/functions'
 import SliderRecommended from './SliderRecommended'
 
+import dictionary from '@/dictionary/lang.json'
+
 export default async function SectionRecommended({ category, qty }) {
   const { posts: dataPosts } = await getPostsByCategoryId({ id: category.id })
 
@@ -23,7 +25,7 @@ export default async function SectionRecommended({ category, qty }) {
               ' mb-2 font-poppins font-medium text-sm md:text-lg lg:text-xl'
             }
           >
-            Podría interesarte
+            {dictionary['You might like']}
           </h4>
         </div>
 

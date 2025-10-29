@@ -12,6 +12,8 @@ import SearchBar from './SearchBar'
 import logoHorizontal from '../../../../public/images/brand-logo-horizontal.webp'
 import logoVertical from '../../../../public/images/brand-logo-vertical.webp'
 
+import dictionary from '@/dictionary/lang.json'
+
 export default function Header() {
   const [isNavbarVisible, setIsNavbarVisible] = useState(true)
   const [lowerPosition, setLowerPosition] = useState(0)
@@ -73,7 +75,7 @@ export default function Header() {
               height={250}
               className="w-auto h-full"
               src={logoHorizontal}
-              alt="Logo Epa Mujer"
+              alt={`Brand Logo ${dictionary['site']}`}
             />
           </Link>
         </div>
