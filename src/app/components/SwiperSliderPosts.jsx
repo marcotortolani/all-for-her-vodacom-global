@@ -25,7 +25,7 @@ export default function SwiperSliderPosts({
 }) {
   return (
     <Swiper
-      className="relative w-full max-w-2xl md:max-w-2xl lg:max-w-4xl h-full lg:min-h-[250px] flex justify-center items-center gap-6 "
+      className="relative w-full h-full lg:min-h-[250px] flex justify-center items-center gap-6 "
       centeredSlides={false}
       autoplay={{
         delay: delayPerView,

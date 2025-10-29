@@ -22,13 +22,14 @@ export default async function Home() {
   )
 
   return (
-    <main className=" z-0 relative w-full px-4 flex flex-col items-center ">
+    <main className=" z-0 relative w-full md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg px-4 flex flex-col items-center ">
       <div className=" z-40 relative top-0 w-screen h-[92vh] min-h-[540px] flex flex-col items-center">
         <SliderRandomPostsHomeCover posts={dataPostsFiltered} qty={4} />
         <SliderCategoryButtons />
       </div>
+
       <HealthSummary />
-      <div className=" w-full mb-4 md:mb-0 md:h-20 md:w-5/6 lg:max-w-4xl lg:w-4/6 flex justify-center items-center ">
+      <div className=" w-full mb-4 md:mb-0 md:h-20 flex justify-center items-center ">
         <HorizontalLine />
       </div>
       <LifestyleSummary />
